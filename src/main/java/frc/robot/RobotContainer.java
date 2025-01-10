@@ -8,8 +8,16 @@ import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.util.PathPlannerLogging;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -18,6 +26,9 @@ import frc.robot.constants.TunerConstants;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 
 public class RobotContainer {
+    private ShuffleboardTab autoTab;
+    private SendableChooser<Command> autoChooser;
+
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
     private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
 
@@ -36,6 +47,13 @@ public class RobotContainer {
 
     public RobotContainer() {
         configureBindings();
+        setupTabs();
+        autoChooser = AutoBuilder.buildAutoChooser("Tests");
+        SmartDashboard.putData("Auto Mode", autoChooser);
+        Field2d field = new Field2d();
+        SmartDashboard.putData("Field", field);
+
+        PathPlannerLogging.setLogCurrentPoseCallback((pose) -> {field.setRobotPose(pose);});
     }
 
     private void configureBindings() {
@@ -68,7 +86,18 @@ public class RobotContainer {
         drivetrain.registerTelemetry(logger::telemeterize);
     }
 
+     private void setupTabs() {
+    autoChooser = new SendableChooser<>();
+
+    autoTab = Shuffleboard.getTab("Auto");
+    autoTab.add(autoChooser).withSize(2, 1);
+
+    autoChooser.setDefaultOption("TestAuto", new PathPlannerAuto("TestAuto"));
+
+  }
+
+
     public Command getAutonomousCommand() {
-        return Commands.print("No autonomous command configured");
+        return autoChooser.getSelected();
     }
 }
