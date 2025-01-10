@@ -46,7 +46,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     }
 
     // Logging inputs
-    DrivetrainInputs inputs = new DrivetrainInputs();
+    DrivetrainInputsAutoLogged inputs = new DrivetrainInputsAutoLogged();
 
     private static final double kSimLoopPeriod = 0.005; // 5 ms
     private Notifier m_simNotifier = null;
@@ -236,7 +236,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
     @Override
     public void log(String subdirectory, String humanReadableName) {
-        // Logger.processInputs(subdirectory + "/" + humanReadableName, inputs);
+        Logger.processInputs(subdirectory + "/" + humanReadableName, inputs);
     }
 
     @Override
