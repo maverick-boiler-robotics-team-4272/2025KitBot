@@ -5,9 +5,7 @@ import static edu.wpi.first.units.Units.*;
 import java.util.function.Supplier;
 
 import org.littletonrobotics.junction.AutoLog;
-import org.littletonrobotics.junction.AutoLogOutput;
 import org.littletonrobotics.junction.Logger;
-import org.littletonrobotics.junction.inputs.LoggableInputs;
 
 import com.ctre.phoenix6.SignalLogger;
 import com.ctre.phoenix6.Utils;
@@ -46,7 +44,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     }
 
     // Logging inputs
-    DrivetrainInputsAutoLogged inputs = new DrivetrainInputsAutoLogged();
+    DrivetrainInputs inputs = new DrivetrainInputs();
 
     private static final double kSimLoopPeriod = 0.005; // 5 ms
     private Notifier m_simNotifier = null;
@@ -236,7 +234,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
     @Override
     public void log(String subdirectory, String humanReadableName) {
-        Logger.processInputs(subdirectory + "/" + humanReadableName, inputs);
+        // Logger.processInputs(subdirectory + "/" + humanReadableName, inputs);
     }
 
     @Override
