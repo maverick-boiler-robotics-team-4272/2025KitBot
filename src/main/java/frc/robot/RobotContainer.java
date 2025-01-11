@@ -84,7 +84,7 @@ public class RobotContainer {
         autoTab.add(autoChooser).withSize(2, 1);
 
         Field2d field = new Field2d();
-        autoTab.add("Field", field);
+        autoTab.add("Field", field).withSize(4, 3);
 
         autoChooser.setDefaultOption("TestAuto", new PathPlannerAuto("TestAuto"));
 
