@@ -45,6 +45,12 @@
           "data": {
             "pathName": "AB to Right Coral"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Coral right to AB"
+          }
         }
       ]
     }

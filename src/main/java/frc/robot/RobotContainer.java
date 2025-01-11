@@ -81,7 +81,7 @@ public class RobotContainer {
 
     private void setupAutos() {
         autoChooser = new SendableChooser<>();
-
+    
         autoTab = Shuffleboard.getTab("Auto");
         autoTab.add(autoChooser).withSize(2, 1);
 
@@ -93,3 +93,4 @@ public class RobotContainer {
         return autoChooser.getSelected();
     }
 }
+
