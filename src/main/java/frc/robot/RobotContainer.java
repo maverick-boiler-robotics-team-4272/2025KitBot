@@ -8,6 +8,7 @@ import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.util.PathPlannerLogging;
 
@@ -46,6 +47,7 @@ public class RobotContainer {
 
     public RobotContainer() {
         configureBindings();
+        registerNamedCommands();
         setupAutos();
     }
         
@@ -73,6 +75,10 @@ public class RobotContainer {
         joystick.rightBumper().whileTrue(new DropState(dropper));
 
         drivetrain.registerTelemetry(logger::telemeterize);
+    }
+
+    private void registerNamedCommands() {
+        NamedCommands.registerCommand("Drop", new DropState(dropper));
     }
 
     private void setupAutos() {
