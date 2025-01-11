@@ -47,7 +47,7 @@ public class RobotContainer {
 
     public RobotContainer() {
         configureBindings();
-        // autoChooser = new SendableChooser<>();
+        autoChooser = new SendableChooser<>();
         SmartDashboard.putData("Auto Mode", autoChooser);
         Field2d field = new Field2d();
         SmartDashboard.putData("Field", field);
@@ -87,8 +87,6 @@ public class RobotContainer {
     }
 
     private void setupTabs() {
-        autoChooser = new SendableChooser<>();
-
         autoTab = Shuffleboard.getTab("Auto");
         autoTab.add(autoChooser).withSize(2, 1);
 
