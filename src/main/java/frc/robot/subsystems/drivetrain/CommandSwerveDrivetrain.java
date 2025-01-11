@@ -231,7 +231,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         return m_sysIdRoutineToApply.dynamic(direction);
     }
 
-      private void initPathPlanner() {
+    private void initPathPlanner() {
         try {
             var config = RobotConfig.fromGUISettings();
             AutoBuilder.configure(
@@ -258,7 +258,6 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         } catch (Exception ex) {
             DriverStation.reportError("Failed to load PathPlanner config and configure AutoBuilder", ex.getStackTrace());
         }
-
     }
     
     @Override
