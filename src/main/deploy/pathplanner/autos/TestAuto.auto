@@ -11,9 +11,15 @@
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 9999999999.0
+            "pathName": "Coral station to KL"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "KL to Coral station"
           }
         },
         {
@@ -26,6 +32,12 @@
           "type": "path",
           "data": {
             "pathName": "KL to Coral station"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Coral to AB"
           }
         }
       ]

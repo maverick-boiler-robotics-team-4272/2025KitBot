@@ -8,48 +8,30 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.26875,
-        "y": 6.218827054794521
+        "x": 1.8570312499999986,
+        "y": 6.135329861111111
       },
       "isLocked": false,
       "linkedName": "Coral Station Left"
     },
     {
       "anchor": {
-        "x": 3.771701388888888,
-        "y": 5.296788194444443
+        "x": 3.0952910958904107,
+        "y": 4.040025684931507
       },
       "prevControl": {
-        "x": 3.1421209094368336,
-        "y": 5.714510797184169
+        "x": 2.2623263888888876,
+        "y": 5.478472222222222
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Reef KL"
+      "linkedName": "Reef AB"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "pointTowardsZones": [
-    {
-      "fieldPosition": {
-        "x": 4.5,
-        "y": 4.0
-      },
-      "rotationOffset": 0.0,
-      "minWaypointRelativePos": 0.17380952380952436,
-      "maxWaypointRelativePos": 1.0,
-      "name": "point towards reef"
-    }
-  ],
-  "eventMarkers": [
-    {
-      "name": "Drop",
-      "waypointRelativePos": 0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -60,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -61.07357416474635
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": null,

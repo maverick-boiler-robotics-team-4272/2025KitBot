@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.771701388888888,
-        "y": 5.296788194444443
+        "x": 3.0952910958904107,
+        "y": 4.040025684931507
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.9302630327245045,
-        "y": 5.717507372526636
+        "x": 2.524315068493151,
+        "y": 5.242080479452054
       },
       "isLocked": false,
-      "linkedName": "Reef KL"
+      "linkedName": "Reef AB"
     },
     {
       "anchor": {
@@ -20,8 +20,8 @@
         "y": 7.015
       },
       "prevControl": {
-        "x": 2.283720890410958,
-        "y": 6.218638698630137
+        "x": 1.9232876712328766,
+        "y": 6.113570205479452
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,7 +48,7 @@
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -61.07357416474635
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }
