@@ -12,7 +12,6 @@ import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.util.PathPlannerLogging;
 
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
@@ -24,7 +23,6 @@ import frc.robot.constants.TunerConstants;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 import frc.robot.subsystems.dropper.Dropper;
 import frc.robot.subsystems.dropper.states.DropState;
-import frc.robot.subsystems.dropper.states.IdleState;
 
 public class RobotContainer {
     private ShuffleboardTab autoTab;
@@ -87,12 +85,7 @@ public class RobotContainer {
         autoTab = Shuffleboard.getTab("Auto");
         autoTab.add(autoChooser).withSize(2, 1);
 
-        Field2d field = new Field2d();
-        autoTab.add("Field", field).withSize(4, 3);
-
         autoChooser.setDefaultOption("TestAuto", new PathPlannerAuto("TestAuto"));
-
-        PathPlannerLogging.setLogCurrentPoseCallback((pose) -> {field.setRobotPose(pose);});
     }
 
 
