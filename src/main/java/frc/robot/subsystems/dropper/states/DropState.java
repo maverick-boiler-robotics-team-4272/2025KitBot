@@ -1,25 +1,22 @@
 
 package frc.robot.subsystems.dropper.states;
 
-import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.dropper.Dropper;
+import frc.robot.utils.commandUtils.State;
 
-public class DropState extends Command {
-
-  Dropper dropper;
+public class DropState extends State<Dropper> {
 
   public DropState(Dropper dropper) {
-    this.dropper = dropper;
-    addRequirements(dropper);
+    super(dropper);
   }
 
   @Override
   public void initialize() {
-    dropper.setPower(1);
+    requiredSubsystem.setPower(1);
   }
-  
+
   @Override
-  public boolean isFinished() {
-    return false;
+  public void end(boolean interrupted) {
+      requiredSubsystem.setPower(0);
   }
 }
