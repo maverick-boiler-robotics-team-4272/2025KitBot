@@ -27,7 +27,6 @@ import frc.robot.subsystems.dropper.states.DropState;
 public class RobotContainer {
     private ShuffleboardTab autoTab;
     private SendableChooser<Command> autoChooser;
-    private Field2d field;
 
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
     private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
@@ -86,12 +85,7 @@ public class RobotContainer {
         autoTab = Shuffleboard.getTab("Auto");
         autoTab.add(autoChooser).withSize(2, 1);
 
-        field = new Field2d();
-        autoTab.add("Field", field).withSize(4, 3);
-
         autoChooser.setDefaultOption("TestAuto", new PathPlannerAuto("TestAuto"));
-
-        PathPlannerLogging.setLogCurrentPoseCallback((pose) -> {field.setRobotPose(pose);});
     }
 
 
