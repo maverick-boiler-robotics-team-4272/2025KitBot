@@ -7,7 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Example Path"
+            "pathName": "IJ Auto Start"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 9999999999.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Coral station to KL"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "KL to Coral station"
           }
         }
       ]
