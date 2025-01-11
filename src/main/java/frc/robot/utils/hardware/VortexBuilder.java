@@ -12,6 +12,7 @@ public class VortexBuilder {
 
     private VortexBuilder(int id) {
         motor = new Vortex(id);
+        config = new SparkFlexConfig();
     }
 
     public VortexBuilder asFollower(SparkFlex motor, boolean inverted) {
