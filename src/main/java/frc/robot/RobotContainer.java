@@ -47,13 +47,7 @@ public class RobotContainer {
 
     public RobotContainer() {
         configureBindings();
-        autoChooser = new SendableChooser<>();
-        SmartDashboard.putData("Auto Mode", autoChooser);
-        Field2d field = new Field2d();
-        SmartDashboard.putData("Field", field);
-        setupTabs();
-
-        PathPlannerLogging.setLogCurrentPoseCallback((pose) -> {field.setRobotPose(pose);});
+        setupAutos();
     }
 
     private void configureBindings() {
@@ -86,11 +80,18 @@ public class RobotContainer {
         drivetrain.registerTelemetry(logger::telemeterize);
     }
 
-    private void setupTabs() {
+    private void setupAutos() {
+        autoChooser = new SendableChooser<>();
+
         autoTab = Shuffleboard.getTab("Auto");
         autoTab.add(autoChooser).withSize(2, 1);
 
+        Field2d field = new Field2d();
+        autoTab.add("Field", field);
+
         autoChooser.setDefaultOption("TestAuto", new PathPlannerAuto("TestAuto"));
+
+        PathPlannerLogging.setLogCurrentPoseCallback((pose) -> {field.setRobotPose(pose);});
     }
 
 
