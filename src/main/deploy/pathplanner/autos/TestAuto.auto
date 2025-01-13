@@ -7,7 +7,49 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Example Path"
+            "pathName": "IJ Auto Start"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Coral station to KL"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "KL to Coral station"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Coral station to KL"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "KL to Coral station"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Coral to AB"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AB to Right Coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Coral right to AB"
           }
         }
       ]

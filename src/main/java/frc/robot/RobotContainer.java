@@ -81,15 +81,16 @@ public class RobotContainer {
 
     private void setupAutos() {
         autoChooser = new SendableChooser<>();
-
+    
         autoTab = Shuffleboard.getTab("Auto");
         autoTab.add(autoChooser).withSize(2, 1);
 
         autoChooser.setDefaultOption("TestAuto", new PathPlannerAuto("TestAuto"));
     }
 
-
     public Command getAutonomousCommand() {
         return autoChooser.getSelected();
     }
 }
+
+
