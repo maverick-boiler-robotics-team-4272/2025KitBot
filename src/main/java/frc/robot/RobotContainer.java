@@ -10,11 +10,10 @@ import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
-import com.pathplanner.lib.util.PathPlannerLogging;
-
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
-import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -71,6 +70,8 @@ public class RobotContainer {
         // reset the field-centric heading on left bumper press
         joystick.b().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
         joystick.rightBumper().whileTrue(new DropState(dropper));
+
+        joystick.a().whileTrue(drivetrain.pathFind(new Pose2d(6, 4, new Rotation2d(0))));
 
         drivetrain.registerTelemetry(logger::telemeterize);
     }
