@@ -10,6 +10,7 @@ import com.ctre.phoenix6.swerve.SwerveDrivetrainConstants;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
@@ -24,8 +25,9 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
+import com.pathplanner.lib.path.PathConstraints;
 
-
+import static frc.robot.constants.AutoConstants.*;
 
 /**
  * Class that extends the Phoenix 6 SwerveDrivetrain class and implements
@@ -170,6 +172,22 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     public Command applyRequest(Supplier<SwerveRequest> requestSupplier) {
         return run(() -> this.setControl(requestSupplier.get()));
     }
+    
+    /**
+     * Path find to a pose
+     * @param target to go to
+     */
+    public Command pathFind(Pose2d target) {
+        return AutoBuilder.pathfindToPose(
+            target, 
+            new PathConstraints(
+                TRANSLATION_MAX,
+                TRANSLATION_MAX_A,
+                ROTATION_MAX.getRadians(), 
+                ROTATION_MAX_A.getRadians()
+            )
+        );
+    }
 
     /**
      * Runs the SysId Quasistatic test in the given direction for the routine
@@ -208,9 +226,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
                 ),
                 new PPHolonomicDriveController(
                     // PID constants for translation
-                    new PIDConstants(10, 0, 0),
+                    new PIDConstants(TRANSLATION_P, TRANSLATION_I, TRANSLATION_D),
                     // PID constants for rotation
-                    new PIDConstants(7, 0, 0)
+                    new PIDConstants(ROTATION_P, ROTATION_I, ROTATION_D)
                 ),
                 config,
                 // Assume the path needs to be flipped for Red vs Blue, this is normally the case
