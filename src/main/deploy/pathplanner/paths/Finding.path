@@ -1,0 +1,219 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.681292808219178,
+        "y": 5.40736301369863
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 4.681292808219176,
+        "y": 5.40736301369863
+      },
+      "isLocked": false,
+      "linkedName": "Reef KL"
+    },
+    {
+      "anchor": {
+        "x": 5.364169520547945,
+        "y": 5.40736301369863
+      },
+      "prevControl": {
+        "x": 4.364169520547945,
+        "y": 5.40736301369863
+      },
+      "nextControl": {
+        "x": 6.364169520547945,
+        "y": 5.40736301369863
+      },
+      "isLocked": false,
+      "linkedName": "Reef IJ"
+    },
+    {
+      "anchor": {
+        "x": 6.1004280821917805,
+        "y": 3.9949486301369865
+      },
+      "prevControl": {
+        "x": 6.352504280821917,
+        "y": 4.671104452054795
+      },
+      "nextControl": {
+        "x": 5.8483518835616435,
+        "y": 3.318792808219178
+      },
+      "isLocked": false,
+      "linkedName": "Reef GH"
+    },
+    {
+      "anchor": {
+        "x": 5.364169520547945,
+        "y": 2.6426369863013703
+      },
+      "prevControl": {
+        "x": 5.749004708904109,
+        "y": 2.7928938356164386
+      },
+      "nextControl": {
+        "x": 4.9793343321917805,
+        "y": 2.492380136986302
+      },
+      "isLocked": false,
+      "linkedName": "Reef EF"
+    },
+    {
+      "anchor": {
+        "x": 3.681292808219178,
+        "y": 2.6426369863013703
+      },
+      "prevControl": {
+        "x": 4.285236515410958,
+        "y": 2.4848672945205488
+      },
+      "nextControl": {
+        "x": 3.077349101027398,
+        "y": 2.800406678082192
+      },
+      "isLocked": false,
+      "linkedName": "Reef CD"
+    },
+    {
+      "anchor": {
+        "x": 2.8548801369863015,
+        "y": 3.9949486301369865
+      },
+      "prevControl": {
+        "x": 2.7707807148972607,
+        "y": 3.405190496575343
+      },
+      "nextControl": {
+        "x": 2.9389795590753423,
+        "y": 4.58470676369863
+      },
+      "isLocked": false,
+      "linkedName": "Reef AB"
+    },
+    {
+      "anchor": {
+        "x": 11.419520547945206,
+        "y": 3.9949486301369865
+      },
+      "prevControl": {
+        "x": 5.98470810145548,
+        "y": 3.7413901969178074
+      },
+      "nextControl": {
+        "x": 16.854332994434934,
+        "y": 4.248507063356166
+      },
+      "isLocked": false,
+      "linkedName": "Red Finding GH"
+    },
+    {
+      "anchor": {
+        "x": 12.245933219178083,
+        "y": 2.6426369863013703
+      },
+      "prevControl": {
+        "x": 14.46749183968322,
+        "y": 3.3403922303082205
+      },
+      "nextControl": {
+        "x": 10.024374598672946,
+        "y": 1.9448817422945204
+      },
+      "isLocked": false,
+      "linkedName": "Red Finding EF"
+    },
+    {
+      "anchor": {
+        "x": 13.958861301369863,
+        "y": 2.6426369863013703
+      },
+      "prevControl": {
+        "x": 11.946540895226883,
+        "y": 2.098425460188357
+      },
+      "nextControl": {
+        "x": 15.971181707512843,
+        "y": 3.1868485124143837
+      },
+      "isLocked": false,
+      "linkedName": "Red Finding CD"
+    },
+    {
+      "anchor": {
+        "x": 14.710145547945206,
+        "y": 3.9949486301369865
+      },
+      "prevControl": {
+        "x": 15.475894792112587,
+        "y": 3.5984114137414385
+      },
+      "nextControl": {
+        "x": 13.944396303777825,
+        "y": 4.391485846532534
+      },
+      "isLocked": false,
+      "linkedName": "Red Finding AB"
+    },
+    {
+      "anchor": {
+        "x": 13.838655821917808,
+        "y": 5.40736301369863
+      },
+      "prevControl": {
+        "x": 13.92157743271083,
+        "y": 4.967040012307363
+      },
+      "nextControl": {
+        "x": 13.755734211124786,
+        "y": 5.847686015089897
+      },
+      "isLocked": false,
+      "linkedName": "Red Finding KL"
+    },
+    {
+      "anchor": {
+        "x": 12.245933219178083,
+        "y": 5.40736301369863
+      },
+      "prevControl": {
+        "x": 12.978295187754174,
+        "y": 5.695140096586044
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Red Finding IJ"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 8.000000000000007,
+      "rotationDegrees": 119.99999999999999
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -57.847704858717506
+  },
+  "reversed": false,
+  "folder": "Field positions",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -61.07357416474635
+  },
+  "useDefaultConstraints": true
+}

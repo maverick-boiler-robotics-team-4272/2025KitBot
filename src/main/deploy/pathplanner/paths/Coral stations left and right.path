@@ -1,0 +1,103 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.277,
+        "y": 7.015
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.2770000000000015,
+        "y": 7.015
+      },
+      "isLocked": false,
+      "linkedName": "Left Coral Station"
+    },
+    {
+      "anchor": {
+        "x": 1.277,
+        "y": 1.0
+      },
+      "prevControl": {
+        "x": 0.2769999999999999,
+        "y": 1.0000000000000002
+      },
+      "nextControl": {
+        "x": 2.277,
+        "y": 0.9999999999999998
+      },
+      "isLocked": false,
+      "linkedName": "Right Coral Station"
+    },
+    {
+      "anchor": {
+        "x": 16.21271404109589,
+        "y": 1.0
+      },
+      "prevControl": {
+        "x": 9.117138698630137,
+        "y": 1.0426583904109576
+      },
+      "nextControl": {
+        "x": 23.308289383561643,
+        "y": 0.9573416095890424
+      },
+      "isLocked": false,
+      "linkedName": "Red Finding Coral Station Left"
+    },
+    {
+      "anchor": {
+        "x": 16.21316,
+        "y": 7.015
+      },
+      "prevControl": {
+        "x": 19.74592198630137,
+        "y": 3.9786023116438356
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0,
+      "rotationDegrees": -55.0
+    },
+    {
+      "waypointRelativePos": 1,
+      "rotationDegrees": 55.0
+    },
+    {
+      "waypointRelativePos": 2,
+      "rotationDegrees": 126.0
+    },
+    {
+      "waypointRelativePos": 2.99,
+      "rotationDegrees": -126.0
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -125.28678068116022
+  },
+  "reversed": false,
+  "folder": "Field positions",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -53.73092645492819
+  },
+  "useDefaultConstraints": true
+}
