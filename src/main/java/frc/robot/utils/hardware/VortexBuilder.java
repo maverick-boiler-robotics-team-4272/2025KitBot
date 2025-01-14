@@ -1,21 +1,18 @@
 package frc.robot.utils.hardware;
 
-import com.revrobotics.RelativeEncoder;
-import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
-import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.SparkLowLevel.PeriodicFrame;
 import com.revrobotics.spark.config.SparkFlexConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 public class VortexBuilder {
-    private SparkFlex motor;
+    private Vortex motor;
     private SparkFlexConfig config;
 
     private VortexBuilder(int id) {
-        motor = new SparkFlex(id, MotorType.kBrushless);
+        motor = new Vortex(id);
+        config = new SparkFlexConfig();
     }
 
     public VortexBuilder asFollower(SparkFlex motor, boolean inverted) {
