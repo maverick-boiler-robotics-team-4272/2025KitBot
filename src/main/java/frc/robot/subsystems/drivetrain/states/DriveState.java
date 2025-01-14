@@ -9,7 +9,6 @@ import com.ctre.phoenix6.swerve.SwerveRequest;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 import frc.robot.utils.commandUtils.State;
 
-import static edu.wpi.first.units.Units.MetersPerSecond;
 import static frc.robot.constants.TeleConstants.*;
 
 public class DriveState extends State<CommandSwerveDrivetrain> {
