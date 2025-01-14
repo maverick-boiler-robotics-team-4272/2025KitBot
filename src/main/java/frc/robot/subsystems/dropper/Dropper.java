@@ -12,7 +12,7 @@ import static frc.robot.constants.SubsystemConstants.DropperConstants.*;
 public class Dropper implements Subsystem {
     
     private SparkFlex dropperMotor;
-    TimeOfFlight lidar = new TimeOfFlight(0);
+    TimeOfFlight lidar = new TimeOfFlight(DROPPER_LIDAR_ID);
 
     public Dropper() {  
         dropperMotor = VortexBuilder.create(DROPPER_MOTOR_ID)
