@@ -85,7 +85,7 @@ public class RobotContainer {
         autoTab = Shuffleboard.getTab("Auto");
         autoTab.add(autoChooser).withSize(2, 1);
 
-        autoChooser.setDefaultOption("TestAuto", new PathPlannerAuto("TestAuto"));
+        autoChooser.setDefaultOption("5 coral!!!", new PathPlannerAuto("TestAuto"));
     }
 
     public Command getAutonomousCommand() {

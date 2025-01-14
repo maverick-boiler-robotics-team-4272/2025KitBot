@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0952910958904107,
-        "y": 4.040025684931507
+        "x": 2.8548801369863015,
+        "y": 3.9949486301369865
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.524315068493151,
-        "y": 5.242080479452054
+        "x": 2.2839041095890416,
+        "y": 5.197003424657533
       },
       "isLocked": false,
       "linkedName": "Reef AB"
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -54.195653652231364
+    "rotation": -53.73092645492819
   },
   "reversed": false,
   "folder": null,
