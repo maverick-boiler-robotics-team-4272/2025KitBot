@@ -4,6 +4,8 @@ import frc.robot.utils.limelight.*;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 
+import static frc.robot.constants.FieldConstants.*;
+
 
 
 public class Limelight {
@@ -30,6 +32,7 @@ public class Limelight {
         LimelightHelpers.setLEDMode_PipelineControl(tableName);
         LimelightHelpers.setLEDMode_ForceOff(tableName);
     }
+    
     public void turnOnLeds() {
         LimelightHelpers.setLEDMode_ForceOn(tableName);
     }
@@ -38,5 +41,12 @@ public class Limelight {
         LimelightHelpers.SetRobotOrientation(tableName, yaw, 0.0, 0.0, 0.0, 0.0, 0.0);
     }
     
+    public Pose2d getBotPose() {
+        return (!isRedSide()) ? LimelightHelpers.getBotPose2d_wpiBlue(tableName) : LimelightHelpers.getBotPose2d_wpiRed(tableName);
+    }
+
+    public LimelightHelpers.PoseEstimate getBotPoseEstimate() {
+        return (!isRedSide()) ? LimelightHelpers.getBotPoseEstimate_wpiBlue(tableName) : LimelightHelpers.getBotPoseEstimate_wpiRed(tableName);
+    }
 
 }
