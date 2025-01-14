@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.constants.TunerConstants;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
+import frc.robot.subsystems.drivetrain.states.PathfindingState;
 import frc.robot.subsystems.dropper.Dropper;
 import frc.robot.subsystems.dropper.states.DropState;
 
@@ -71,7 +72,7 @@ public class RobotContainer {
         joystick.b().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
         joystick.rightBumper().whileTrue(new DropState(dropper));
 
-        joystick.a().whileTrue(drivetrain.pathFind(new Pose2d(6, 4, new Rotation2d(0))));
+        joystick.a().whileTrue(new PathfindingState(drivetrain, new Pose2d(6, 4, new Rotation2d(0))));
 
         drivetrain.registerTelemetry(logger::telemeterize);
     }

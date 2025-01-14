@@ -172,22 +172,6 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     public Command applyRequest(Supplier<SwerveRequest> requestSupplier) {
         return run(() -> this.setControl(requestSupplier.get()));
     }
-    
-    /**
-     * Path find to a pose
-     * @param target to go to
-     */
-    public Command pathFind(Pose2d target) {
-        return AutoBuilder.pathfindToPose(
-            target, 
-            new PathConstraints(
-                TRANSLATION_MAX,
-                TRANSLATION_MAX_A,
-                ROTATION_MAX.getRadians(), 
-                ROTATION_MAX_A.getRadians()
-            )
-        );
-    }
 
     /**
      * Runs the SysId Quasistatic test in the given direction for the routine
