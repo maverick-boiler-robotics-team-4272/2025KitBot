@@ -12,7 +12,7 @@ public class DropState extends State<Dropper> {
 
   @Override
   public void initialize() {
-    requiredSubsystem.setPower(1);
+    requiredSubsystem.setPower(0.5);
   }
 
   @Override

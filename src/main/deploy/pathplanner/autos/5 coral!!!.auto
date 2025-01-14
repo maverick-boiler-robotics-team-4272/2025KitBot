@@ -1,0 +1,61 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IJ Auto Start"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Coral to KL"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "KL to Left Coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Coral to KL"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "KL to Left Coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left Coral to AB"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AB to Right Coral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right Coral to AB"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
