@@ -3,7 +3,6 @@ package frc.robot.subsystems.dropper;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.playingwithfusion.TimeOfFlight;
@@ -11,7 +10,7 @@ import com.playingwithfusion.TimeOfFlight;
 import frc.robot.utils.hardware.VortexBuilder;
 import frc.robot.utils.logging.Loggable;
 
-import static frc.robot.constants.SubsystemConstants.DropperConstants.*;
+import static frc.robot.constants.HardwareMap.*;
 
 import org.littletonrobotics.junction.AutoLog;
 import org.littletonrobotics.junction.Logger;
