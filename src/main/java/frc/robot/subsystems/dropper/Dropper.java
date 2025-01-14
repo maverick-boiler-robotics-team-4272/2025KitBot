@@ -5,8 +5,9 @@ import com.playingwithfusion.TimeOfFlight;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.constants.HardwareMap;
 import frc.robot.utils.hardware.VortexBuilder;
+
+import static frc.robot.constants.SubsystemConstants.DropperConstants.*;
 
 public class Dropper implements Subsystem {
     
@@ -14,7 +15,7 @@ public class Dropper implements Subsystem {
     TimeOfFlight lidar = new TimeOfFlight(0);
 
     public Dropper() {  
-        dropperMotor = VortexBuilder.create(HardwareMap.DROPPER_MOTOR_ID)
+        dropperMotor = VortexBuilder.create(DROPPER_MOTOR_ID)
             .withCurrentLimit(80)
             .withVoltageCompensation(12)
             .withInversion(true)

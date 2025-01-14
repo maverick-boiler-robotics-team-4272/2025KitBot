@@ -24,7 +24,7 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
-import static frc.robot.constants.AutoConstants.*;
+import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.AutoConstants.*;
 
 /**
  * Class that extends the Phoenix 6 SwerveDrivetrain class and implements

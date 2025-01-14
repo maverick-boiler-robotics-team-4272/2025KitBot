@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import static frc.robot.constants.TeleConstants.MAX_TRANSLATION;
-
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -22,6 +20,8 @@ import frc.robot.subsystems.drivetrain.states.DriveState;
 import frc.robot.subsystems.drivetrain.states.PathfindingState;
 import frc.robot.subsystems.dropper.Dropper;
 import frc.robot.subsystems.dropper.states.DropState;
+
+import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.TeleConstants.MAX_TRANSLATION;
 
 public class RobotContainer {
     private ShuffleboardTab autoTab;
