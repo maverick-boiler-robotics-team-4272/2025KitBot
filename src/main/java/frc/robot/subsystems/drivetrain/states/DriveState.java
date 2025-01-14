@@ -35,9 +35,9 @@ public class DriveState extends State<CommandSwerveDrivetrain> {
     public void execute() {
         requiredSubsystem.setControl(
             request
-                .withVelocityX(xAxis.getAsDouble())
-                .withVelocityY(yAxis.getAsDouble())
-                .withRotationalRate(theta.getAsDouble())
+                .withVelocityX(-xAxis.getAsDouble() * MAX_TRANSLATION)
+                .withVelocityY(-yAxis.getAsDouble() * MAX_TRANSLATION)
+                .withRotationalRate(-theta.getAsDouble() * MAX_ANGULAR)
         );
     }
 }

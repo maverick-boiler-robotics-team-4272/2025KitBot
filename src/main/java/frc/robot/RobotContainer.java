@@ -50,9 +50,9 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             new DriveState(
                 drivetrain, 
-                () -> -joystick.getLeftY() * MAX_TRANSLATION, 
-                () -> -joystick.getLeftX() * MAX_TRANSLATION, 
-                () -> -joystick.getRightX() * MAX_ANGULAR
+                joystick::getLeftY,
+                joystick::getLeftX,
+                joystick::getRightX
             )
         );
 
