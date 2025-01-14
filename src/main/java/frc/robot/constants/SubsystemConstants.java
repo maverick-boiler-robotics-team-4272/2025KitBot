@@ -34,7 +34,6 @@ public class SubsystemConstants {
     }
 
     public static class DropperConstants {
-        public static final int DROPPER_MOTOR_ID = 28;
-        public static final int DROPPER_LIDAR_ID = 27;
+        
     }
 }

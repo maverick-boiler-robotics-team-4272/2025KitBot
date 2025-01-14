@@ -22,7 +22,7 @@ public class Robot extends LoggedRobot {
 
   @Override
   public void robotInit() {
-    Logger.recordMetadata("KitBot", "2025Bot"); // Set a metadata value
+    Logger.recordMetadata("KitBot", "2025KitBot"); // Set a metadata value
 
     if(isReal()) {
       Logger.addDataReceiver(new WPILOGWriter()); // Log to a USB stick ("/U/logs")
