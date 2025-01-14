@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.1004280821917805,
-        "y": 3.9949486301369865
+        "x": 6.077690972222221,
+        "y": 5.338715277777778
       },
       "isLocked": false,
       "linkedName": "Reef GH"
@@ -20,15 +20,20 @@
         "y": 7.015
       },
       "prevControl": {
-        "x": 0.27700000000000014,
-        "y": 7.015
+        "x": 3.0868923611111097,
+        "y": 6.973871527777778
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "Coral Station Left"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.6490909090909098,
+      "rotationDegrees": -55.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
