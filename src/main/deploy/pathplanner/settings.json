@@ -4,7 +4,10 @@
   "holonomicMode": true,
   "pathFolders": [
     "Field positions",
-    "To Left Coral"
+    "Left Coral to Reef",
+    "Right Coral to Reef",
+    "To Left Coral",
+    "To Right Coral"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,

@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.5061215753424655,
-        "y": 4.986643835616438
+        "x": 5.148681467189353,
+        "y": 5.696051374859655
       },
       "isLocked": false,
       "linkedName": null
@@ -20,12 +20,12 @@
         "y": 5.40736301369863
       },
       "prevControl": {
-        "x": 6.716481164383561,
-        "y": 4.8363869863013695
+        "x": 5.587162445334021,
+        "y": 5.294340204074417
       },
       "nextControl": {
-        "x": 4.164263679367921,
-        "y": 5.913989924419084
+        "x": 4.869778427656385,
+        "y": 5.657942579957938
       },
       "isLocked": false,
       "linkedName": "Reef IJ"
@@ -36,22 +36,26 @@
         "y": 7.015
       },
       "prevControl": {
-        "x": 4.657833904109589,
-        "y": 6.699460616438356
+        "x": 4.316351288763967,
+        "y": 5.798844654868818
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Coral Station Left"
+      "linkedName": "Left Coral Station"
     }
   ],
   "rotationTargets": [
+    {
+      "waypointRelativePos": 0.2845691382765533,
+      "rotationDegrees": -120.73375148028579
+    },
     {
       "waypointRelativePos": 0.5,
       "rotationDegrees": -120.72999999999999
     },
     {
-      "waypointRelativePos": 0.9779559118236474,
-      "rotationDegrees": -120.73375148028579
+      "waypointRelativePos": 1.8196392785571154,
+      "rotationDegrees": -55.0
     }
   ],
   "constraintZones": [],

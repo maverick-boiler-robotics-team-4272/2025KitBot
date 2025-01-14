@@ -12,7 +12,7 @@
         "y": 7.015
       },
       "isLocked": false,
-      "linkedName": "Coral Station Left"
+      "linkedName": "Left Coral Station"
     },
     {
       "anchor": {
@@ -28,7 +28,7 @@
         "y": 0.9999999999999998
       },
       "isLocked": false,
-      "linkedName": "Coral Station Right"
+      "linkedName": "Right Coral Station"
     },
     {
       "anchor": {

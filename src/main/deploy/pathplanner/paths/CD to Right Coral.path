@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.8548801369863015,
-        "y": 3.9949486301369865
+        "x": 3.681292808219178,
+        "y": 2.6426369863013703
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0885702054794524,
-        "y": 2.642636986301371
+        "x": 2.465372064892671,
+        "y": 1.8024869662460232
       },
       "isLocked": false,
-      "linkedName": "Reef AB"
+      "linkedName": "Reef CD"
     },
     {
       "anchor": {
@@ -20,8 +20,8 @@
         "y": 1.0
       },
       "prevControl": {
-        "x": 2.2087756849315068,
-        "y": 2.4322773972602736
+        "x": 2.040209964123453,
+        "y": 1.5426903922418105
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,7 +30,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.6981818181818192,
+      "waypointRelativePos": 0.5,
       "rotationDegrees": 55.0
     }
   ],
@@ -53,7 +53,7 @@
   "folder": "To Right Coral",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 60.25511870305777
   },
   "useDefaultConstraints": true
 }
