@@ -24,42 +24,19 @@ public class Robot extends LoggedRobot {
 
   @Override
   public void robotInit() {
-    boolean start = true;
+    Logger.recordMetadata("KitBot", "2025Bot"); // Set a metadata value
 
-    Logger.recordMetadata("ProjectName", "2024Bot"); // Set a metadata value
-
-    if (isReal()) {
-      File usb = new File("/U/Logs"); // Gets the usb file
-
-      if(!usb.exists()) { //Checks if it exists
-          usb = new File("/home/lvuser/Logs"); // logs it to the rio
-
-          if(!usb.exists()) // checks if the dir exists
-            usb.mkdir();
-      }
-
-      Logger.addDataReceiver(new WPILOGWriter(usb.getPath())); // Log to a USB stick ("/U/logs")
-      Logger.addDataReceiver(new NT4Publisher()); // Publish data to NetworkTables
-      
-      new PowerDistribution(10, ModuleType.kRev); // Enables power distribution logging
-    } else {
-        // setUseTiming(false); // Run as fast as possible
-        // String logPath = LogFileUtil.findReplayLog(); // Pull the replay log from AdvantageScope (or prompt the user)
-
-        // if(logPath == "no") {
-        //   start = false;
-        // } else {
-        //   Logger.setReplaySource(new WPILOGReader(logPath)); // Read replay log
-        //   Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim"))); // Save outputs to a new log
-        // }
-
-        start = false;
+    if(isReal()) {
+      Logger.addDataReceiver(new WPILOGWriter()); // Log to a USB stick ("/U/logs")
     }
+    
+    Logger.addDataReceiver(new NT4Publisher()); // Publish data to NetworkTables
+      
+    new PowerDistribution(10, ModuleType.kRev); // Enables power distribution logging
 
     // Logger.disableDeterministicTimestamps() // See "Deterministic Timestamps" in
     // the "Understanding Data Flow" page
-    if(start)
-      Logger.start(); // Start logging! No more data receivers, r eplay sources, or metadata values may
+    Logger.start(); // Start logging! No more data receivers, r eplay sources, or metadata values may
                     // be added.
 
     m_robotContainer = new RobotContainer();
