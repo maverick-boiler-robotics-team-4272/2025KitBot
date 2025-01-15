@@ -1,12 +1,6 @@
 package frc.robot.utils.limelight;
-import frc.robot.utils.limelight.LimelightHelpers;
-import frc.robot.utils.limelight.*;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
-
-import static frc.robot.constants.FieldConstants.*;
-
-
 
 public class Limelight {
     private String tableName;
@@ -42,11 +36,12 @@ public class Limelight {
     }
     
     public Pose2d getBotPose() {
-        return (!isRedSide()) ? LimelightHelpers.getBotPose2d_wpiBlue(tableName) : LimelightHelpers.getBotPose2d_wpiRed(tableName);
+        // return (!isRedSide()) ? LimelightHelpers.getBotPose2d_wpiBlue(tableName) : LimelightHelpers.getBotPose2d_wpiRed(tableName);
+        return LimelightHelpers.getBotPose2d_wpiBlue(tableName);
     }
 
     public LimelightHelpers.PoseEstimate getBotPoseEstimate() {
-        return (!isRedSide()) ? LimelightHelpers.getBotPoseEstimate_wpiBlue(tableName) : LimelightHelpers.getBotPoseEstimate_wpiRed(tableName);
+        return LimelightHelpers.getBotPoseEstimate_wpiBlue(tableName);
     }
 
 }
