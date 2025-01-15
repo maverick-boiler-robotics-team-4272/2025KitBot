@@ -16,6 +16,7 @@ import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Notifier;
@@ -265,16 +266,20 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     }
 
     private void fuseOdometry() {
-        FRONT_LIMELIGHT.setRobotOrientation(getPigeon2().getYaw().getValueAsDouble());
+        FRONT_LIMELIGHT.setRobotOrientation(getState().Pose.getRotation().getDegrees());
 
         LimelightHelpers.PoseEstimate limelightMeasurement = SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT.getBotPoseEstimate();
 
         if(limelightMeasurement != null) {
-            if(limelightMeasurement.tagCount >= 1 && limelightMeasurement.avgTagDist < 4.0) {
+            if(
+                limelightMeasurement.tagCount > 0 && 
+                limelightMeasurement.avgTagDist < 4.0 && 
+                Units.radiansToRotations(getState().Speeds.omegaRadiansPerSecond) < 2.0
+            ) {
                 setVisionMeasurementStdDevs(VecBuilder.fill(.7,.7,9999999));
                 addVisionMeasurement(
                     limelightMeasurement.pose,
-                    limelightMeasurement.timestampSeconds
+                    Utils.fpgaToCurrentTime(limelightMeasurement.timestampSeconds)
                 );
 
                 lastDistance = inputs.distanceTraveled;

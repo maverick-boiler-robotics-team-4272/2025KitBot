@@ -41,7 +41,8 @@ public class Limelight {
     }
 
     public LimelightHelpers.PoseEstimate getBotPoseEstimate() {
-        return LimelightHelpers.getBotPoseEstimate_wpiBlue(tableName);
+        // return LimelightHelpers.getBotPoseEstimate_wpiBlue(tableName); // Could be one of these?
+        return LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2(tableName); //TODO: Check Which one may work
     }
 
 }
