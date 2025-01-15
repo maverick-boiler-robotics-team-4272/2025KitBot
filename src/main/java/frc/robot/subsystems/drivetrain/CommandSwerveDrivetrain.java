@@ -12,6 +12,7 @@ import com.ctre.phoenix6.swerve.SwerveDrivetrainConstants;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
@@ -22,7 +23,9 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
+import frc.robot.constants.SubsystemConstants;
 import frc.robot.constants.TunerConstants.TunerSwerveDrivetrain;
+import frc.robot.utils.limelight.LimelightHelpers;
 import frc.robot.utils.logging.Loggable;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -30,6 +33,7 @@ import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.AutoConstants.*;
+import static frc.robot.constants.SubsystemConstants.LimeLightConstants.*;
 
 /**
  * Class that extends the Phoenix 6 SwerveDrivetrain class and implements
@@ -43,10 +47,30 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
         public boolean fuseVison; // Is the odometry fusing
         public double distanceTraveled; // How much distance has the robot traveled
+        public Pose2d limelightPose;
+        public double tagDistance;
     }
 
     // Logging inputs
     DrivetrainInputsAutoLogged inputs = new DrivetrainInputsAutoLogged();
+
+    private void initInputs() {
+        inputs.distanceTraveled = 0.0;
+        inputs.fuseVison = false;
+        inputs.limelightPose = new Pose2d();
+        inputs.tagDistance = 0.0;
+        inputs.estimatedPose = new Pose2d();
+
+        inputs.moduleStates = new SwerveModuleState[4];
+        for(int i = 0; i < 4; i++) {
+            inputs.moduleStates[i] = getModule(i).getCurrentState();
+        }
+
+        FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
+    }
+
+    //Last distance the tag was read
+    private double lastDistance = 0.0;
 
     private static final double kSimLoopPeriod = 0.005; // 5 ms
     private Notifier m_simNotifier = null;
@@ -149,6 +173,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         }
 
         initPathPlanner();
+        initInputs();
     }
 
     /**
@@ -175,6 +200,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         }
 
         initPathPlanner();
+        initInputs();
     }      
 
     /**
@@ -237,6 +263,30 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             DriverStation.reportError("Failed to load PathPlanner config and configure AutoBuilder", ex.getStackTrace());
         }
     }
+
+    private void fuseOdometry() {
+        FRONT_LIMELIGHT.setRobotOrientation(getPigeon2().getYaw().getValueAsDouble());
+
+        LimelightHelpers.PoseEstimate limelightMeasurement = SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT.getBotPoseEstimate();
+
+        if(limelightMeasurement != null) {
+            if(limelightMeasurement.tagCount >= 1 && limelightMeasurement.avgTagDist < 4.0) {
+                setVisionMeasurementStdDevs(VecBuilder.fill(.7,.7,9999999));
+                addVisionMeasurement(
+                    limelightMeasurement.pose,
+                    limelightMeasurement.timestampSeconds
+                );
+
+                lastDistance = inputs.distanceTraveled;
+                inputs.fuseVison = true;
+            } else {
+                inputs.fuseVison = false;
+            }
+
+            inputs.tagDistance = limelightMeasurement.avgTagDist;
+            inputs.limelightPose = limelightMeasurement.pose;
+        }
+    }
     
     @Override
     public void log(String subdirectory, String humanReadableName) {
@@ -264,6 +314,11 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         }
 
         log("Subsystems", "Drivetrain");
+
+        fuseOdometry();
+
+        inputs.estimatedPose = getState().Pose;
+        inputs.moduleStates = getState().ModuleStates;
     }
 
     private void startSimThread() {
