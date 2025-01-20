@@ -8,30 +8,30 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0151274232530363,
-        "y": 2.6113364253319125
+        "x": 6.521147260273973,
+        "y": 2.943150684931507
       },
       "isLocked": false,
       "linkedName": "Right Coral Station"
     },
     {
       "anchor": {
-        "x": 2.8548801369863015,
+        "x": 6.1004280821917805,
         "y": 3.9949486301369865
       },
       "prevControl": {
-        "x": 2.7477788790657884,
-        "y": 3.7151618490843337
+        "x": 5.995248287671233,
+        "y": 2.807919520547945
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Reef AB"
+      "linkedName": "Reef GH"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.6052104208416834,
-      "rotationDegrees": 0.0
+      "waypointRelativePos": 0.8376753507014031,
+      "rotationDegrees": 180.0
     }
   ],
   "constraintZones": [],
@@ -39,7 +39,7 @@
   "eventMarkers": [
     {
       "name": "Drop",
-      "waypointRelativePos": 0.9333333333333325,
+      "waypointRelativePos": 1.0,
       "endWaypointRelativePos": null,
       "command": null
     }
@@ -54,7 +54,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "Right Coral to Reef",
