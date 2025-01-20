@@ -12,6 +12,8 @@ import com.ctre.phoenix6.swerve.SwerveDrivetrainConstants;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
+import static frc.robot.constants.HardwareMap.*;
+
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -28,6 +30,7 @@ import frc.robot.constants.SubsystemConstants;
 import frc.robot.constants.TunerConstants.TunerSwerveDrivetrain;
 import frc.robot.utils.limelight.LimelightHelpers;
 import frc.robot.utils.logging.Loggable;
+import frc.robot.utils.limelight.LimelightHelpers.PoseEstimate;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
@@ -68,6 +71,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         }
 
         FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
+        BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
     }
 
     //Last distance the tag was read
@@ -267,9 +271,16 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
     private void fuseOdometry() {
         FRONT_LIMELIGHT.setRobotOrientation(getState().Pose.getRotation().getDegrees());
+        BACK_LIMELIGHT.setRobotOrientation(getState().Pose.getRotation().getDegrees());
 
-        LimelightHelpers.PoseEstimate limelightMeasurement = SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT.getBotPoseEstimate();
-
+        LimelightHelpers.PoseEstimate limelightMeasurement = SubsystemConstants.LimeLightConstants.BACK_LIMELIGHT.getBotPoseEstimate();
+        renameThisLater(limelightMeasurement);
+        limelightMeasurement = SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT.getBotPoseEstimate();
+        renameThisLater(limelightMeasurement);
+    
+    }
+    
+    public void renameThisLater(LimelightHelpers.PoseEstimate limelightMeasurement) {
         if(limelightMeasurement != null) {
             if(
                 limelightMeasurement.tagCount > 0 && 
@@ -292,7 +303,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             inputs.limelightPose = limelightMeasurement.pose;
         }
     }
-    
+
     @Override
     public void log(String subdirectory, String humanReadableName) {
         Logger.processInputs(subdirectory + "/" + humanReadableName, inputs);

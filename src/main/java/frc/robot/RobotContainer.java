@@ -24,6 +24,7 @@ import frc.robot.subsystems.dropper.states.DropState;
 
 import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.TeleConstants.MAX_TRANSLATION;
 import static frc.robot.constants.SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT;
+import static frc.robot.constants.SubsystemConstants.LimeLightConstants.BACK_LIMELIGHT;
 
 public class RobotContainer {
     private ShuffleboardTab autoTab;
@@ -67,7 +68,8 @@ public class RobotContainer {
 
         joystick.a().whileTrue(new PathfindingState(drivetrain, new Pose2d(6, 4, new Rotation2d(0))));
         joystick.y().onTrue(new ResetState(drivetrain, FRONT_LIMELIGHT::getBotPose));
-
+        joystick.y().onTrue(new ResetState(drivetrain, BACK_LIMELIGHT::getBotPose));
+        
         drivetrain.registerTelemetry(logger::telemeterize);
     }
 

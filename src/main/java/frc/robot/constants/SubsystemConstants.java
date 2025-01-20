@@ -51,6 +51,18 @@ public class SubsystemConstants {
                 Rotation2d.fromDegrees(0).getRadians()
             )
         );
+        public static Pose3d BACK_LIMELIGHT_POSE = new Pose3d(
+            0.0,
+            1.0,
+            180,
+            new Rotation3d(
+                45, 
+                Rotation2d.fromDegrees(10).getRadians(),
+                Rotation2d.fromDegrees(180).getRadians()
+            )
+        );
+
         public static Limelight FRONT_LIMELIGHT = new Limelight("limelight-front");
+        public static Limelight BACK_LIMELIGHT = new Limelight("limelight-back");
     }
 }
