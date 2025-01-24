@@ -1,5 +1,7 @@
 package frc.robot.constants;
 
+import static edu.wpi.first.units.Units.Inches;
+import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
@@ -43,20 +45,20 @@ public class SubsystemConstants {
     public static class LimeLightConstants {
         public static Pose3d FRONT_LIMELIGHT_POSE = new Pose3d(
             0.0,
-            0.0,
-            0.0,
+            Units.inchesToMeters(9.177),
+            Units.inchesToMeters(17.607),
             new Rotation3d(
-                0, 
+                -15, 
                 Rotation2d.fromDegrees(10).getRadians(),
                 Rotation2d.fromDegrees(0).getRadians()
             )
         );
         public static Pose3d BACK_LIMELIGHT_POSE = new Pose3d(
             0.0,
-            1.0,
-            180,
+            Units.inchesToMeters(-8.661),
+            Units.inchesToMeters(17.897),
             new Rotation3d(
-                45, 
+                -25, 
                 Rotation2d.fromDegrees(10).getRadians(),
                 Rotation2d.fromDegrees(180).getRadians()
             )
