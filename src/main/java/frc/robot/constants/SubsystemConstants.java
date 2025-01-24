@@ -48,8 +48,8 @@ public class SubsystemConstants {
             Units.inchesToMeters(9.177),
             Units.inchesToMeters(17.607),
             new Rotation3d(
-                -15, 
-                Rotation2d.fromDegrees(10).getRadians(),
+                0, 
+                Rotation2d.fromDegrees(15).getRadians(),
                 Rotation2d.fromDegrees(0).getRadians()
             )
         );
@@ -58,8 +58,8 @@ public class SubsystemConstants {
             Units.inchesToMeters(-8.661),
             Units.inchesToMeters(17.897),
             new Rotation3d(
-                -25, 
-                Rotation2d.fromDegrees(10).getRadians(),
+                0, 
+                Rotation2d.fromDegrees(25).getRadians(),
                 Rotation2d.fromDegrees(180).getRadians()
             )
         );
