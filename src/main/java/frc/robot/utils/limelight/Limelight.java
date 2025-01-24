@@ -14,6 +14,7 @@ public class Limelight implements Periodical, Loggable {
     public static class LimelightInputs {
         boolean tV;
         Pose2d robotPose;
+        double tagDist;
     }
 
     LimelightInputsAutoLogged inputs = new LimelightInputsAutoLogged();
@@ -27,6 +28,7 @@ public class Limelight implements Periodical, Loggable {
 
         inputs.tV = false;
         inputs.robotPose = new Pose2d();
+        inputs.tagDist = 0.0;
 
         PeriodicalUtil.registerPeriodic(this);
     }
@@ -68,8 +70,10 @@ public class Limelight implements Periodical, Loggable {
         LimelightHelpers.PoseEstimate poseEstimate = getBotPoseEstimate();
         if(poseEstimate == null) {
             inputs.robotPose = new Pose2d(0, 0, new Rotation2d(0));
+            inputs.tagDist = 0.0;
         } else {
             inputs.robotPose = poseEstimate.pose;
+            inputs.tagDist = poseEstimate.avgTagDist;
         }
         inputs.tV = LimelightHelpers.getTV(tableName);
 
