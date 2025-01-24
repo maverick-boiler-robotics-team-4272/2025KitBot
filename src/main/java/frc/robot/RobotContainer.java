@@ -24,7 +24,6 @@ import frc.robot.subsystems.dropper.states.DropState;
 
 import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.TeleConstants.MAX_TRANSLATION;
 import static frc.robot.constants.SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT;
-import static frc.robot.constants.SubsystemConstants.LimeLightConstants.BACK_LIMELIGHT;
 
 public class RobotContainer {
     private ShuffleboardTab autoTab;
