@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.utils.commandUtils.PeriodicalUtil;
 
 
 public class Robot extends LoggedRobot {
@@ -42,6 +43,8 @@ public class Robot extends LoggedRobot {
 
   @Override
   public void robotPeriodic() {
+    PeriodicalUtil.runPeriodics();
+
     CommandScheduler.getInstance().run(); 
   }
 

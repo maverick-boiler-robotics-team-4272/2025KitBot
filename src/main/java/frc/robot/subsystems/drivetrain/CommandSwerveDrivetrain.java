@@ -12,8 +12,6 @@ import com.ctre.phoenix6.swerve.SwerveDrivetrainConstants;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
-import static frc.robot.constants.HardwareMap.*;
-
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -26,12 +24,9 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
-import frc.robot.constants.SubsystemConstants;
 import frc.robot.constants.TunerConstants.TunerSwerveDrivetrain;
 import frc.robot.utils.limelight.LimelightHelpers;
 import frc.robot.utils.logging.Loggable;
-import frc.robot.utils.limelight.LimelightHelpers.PoseEstimate;
-
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
@@ -51,8 +46,6 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
         public boolean fuseVison; // Is the odometry fusing
         public double distanceTraveled; // How much distance has the robot traveled
-        public Pose2d limelightPose;
-        public double tagDistance;
     }
 
     // Logging inputs
@@ -61,8 +54,6 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     private void initInputs() {
         inputs.distanceTraveled = 0.0;
         inputs.fuseVison = false;
-        inputs.limelightPose = new Pose2d();
-        inputs.tagDistance = 0.0;
         inputs.estimatedPose = new Pose2d();
 
         inputs.moduleStates = new SwerveModuleState[4];
@@ -273,14 +264,11 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         FRONT_LIMELIGHT.setRobotOrientation(getState().Pose.getRotation().getDegrees());
         BACK_LIMELIGHT.setRobotOrientation(getState().Pose.getRotation().getDegrees());
 
-        LimelightHelpers.PoseEstimate limelightMeasurement = SubsystemConstants.LimeLightConstants.BACK_LIMELIGHT.getBotPoseEstimate();
-        renameThisLater(limelightMeasurement);
-        limelightMeasurement = SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT.getBotPoseEstimate();
-        renameThisLater(limelightMeasurement);
-    
+        fuseVision(BACK_LIMELIGHT.getBotPoseEstimate());
+        fuseVision(FRONT_LIMELIGHT.getBotPoseEstimate());
     }
     
-    public void renameThisLater(LimelightHelpers.PoseEstimate limelightMeasurement) {
+    public void fuseVision(LimelightHelpers.PoseEstimate limelightMeasurement) {
         if(limelightMeasurement != null) {
             if(
                 limelightMeasurement.tagCount > 0 && 
@@ -298,9 +286,6 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             } else {
                 inputs.fuseVison = false;
             }
-
-            inputs.tagDistance = limelightMeasurement.avgTagDist;
-            inputs.limelightPose = limelightMeasurement.pose;
         }
     }
 
