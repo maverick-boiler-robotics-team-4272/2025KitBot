@@ -47,6 +47,8 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
         public boolean fuseVison; // Is the odometry fusing
         public double distanceTraveled; // How much distance has the robot traveled
+
+        public boolean isRedSide;
     }
 
     // Logging inputs
@@ -56,14 +58,14 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         inputs.distanceTraveled = 0.0;
         inputs.fuseVison = false;
         inputs.estimatedPose = new Pose2d();
-
+        inputs.isRedSide = false;
         inputs.moduleStates = new SwerveModuleState[4];
         for(int i = 0; i < 4; i++) {
             inputs.moduleStates[i] = getModule(i).getCurrentState();
         }
 
-        FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
-        BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
+        // FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
+        // BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
     }
 
     //Last distance the tag was read
@@ -297,6 +299,8 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
     @Override
     public void periodic() {
+        boolean isRed = FieldConstants.isRedSide();
+
         /*
          * Periodically try to apply the operator perspective.
          * If we haven't applied the operator perspective before, then we should apply it regardless of DS state.
@@ -307,13 +311,15 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         if (!m_hasAppliedOperatorPerspective || DriverStation.isDisabled()) {
             DriverStation.getAlliance().ifPresent(allianceColor -> {
                 setOperatorPerspectiveForward(
-                    FieldConstants.isRedSide()
+                    isRed
                         ? kRedAlliancePerspectiveRotation
                         : kBlueAlliancePerspectiveRotation
                 );
                 m_hasAppliedOperatorPerspective = true;
             });
         }
+
+        inputs.isRedSide = isRed;
 
         log("Subsystems", "Drivetrain");
 
