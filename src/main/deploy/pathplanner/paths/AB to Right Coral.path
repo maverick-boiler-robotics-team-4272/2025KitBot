@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.8548801369863015,
-        "y": 3.9949486301369865
+        "x": 3.215496575342466,
+        "y": 3.9799229452054794
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0885702054794524,
-        "y": 2.642636986301371
+        "x": 2.449186643835617,
+        "y": 2.6276113013698637
       },
       "isLocked": false,
       "linkedName": "Reef AB"
@@ -38,7 +38,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 4.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,

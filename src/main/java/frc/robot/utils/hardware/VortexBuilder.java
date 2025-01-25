@@ -138,7 +138,7 @@ public class VortexBuilder {
     }
 
 
-    public SparkFlex build() {
+    public Vortex build() {
         motor.configureAsync(config, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         return motor;
     }

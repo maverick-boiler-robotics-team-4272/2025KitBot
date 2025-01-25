@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.4521689742233193,
-        "y": 6.451190857191198
+        "x": 2.452729676985107,
+        "y": 6.526151789548895
       },
       "isLocked": false,
       "linkedName": "Left Coral Station"
     },
     {
       "anchor": {
-        "x": 3.681292808219178,
-        "y": 5.40736301369863
+        "x": 3.7864726027397264,
+        "y": 5.242080479452054
       },
       "prevControl": {
-        "x": 3.456609707055308,
-        "y": 5.7920846728160935
+        "x": 3.5193387316103415,
+        "y": 5.635076995585663
       },
       "nextControl": null,
       "isLocked": false,
@@ -29,7 +29,21 @@
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.6547619047619033,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [
     {
       "fieldPosition": {
@@ -45,18 +59,23 @@
   "eventMarkers": [
     {
       "name": "Drop",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.8928571428571411,
       "endWaypointRelativePos": null,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Drop"
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 5.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
-    "unlimited": false
+    "unlimited": true
   },
   "goalEndState": {
     "velocity": 0,
@@ -68,5 +87,5 @@
     "velocity": 0,
     "rotation": -53.73092645492819
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

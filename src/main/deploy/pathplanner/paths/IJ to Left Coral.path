@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.364169520547945,
-        "y": 5.40736301369863
+        "x": 5.093707191780822,
+        "y": 5.242080479452054
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.8660618973261043,
-        "y": 6.448881880268222
+        "x": 2.595599568558981,
+        "y": 6.283599346021646
       },
       "isLocked": false,
       "linkedName": "Reef IJ"
@@ -38,7 +38,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 4.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
