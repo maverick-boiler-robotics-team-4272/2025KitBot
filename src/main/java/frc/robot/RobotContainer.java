@@ -6,8 +6,6 @@ package frc.robot;
 
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -70,7 +68,7 @@ public class RobotContainer {
         joystick.rightBumper().whileTrue(new DropState(dropper));
 
         joystick.a().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_STATION_LEFT));
-        joystick.y().onTrue(new ResetState(drivetrain, FRONT_LIMELIGHT::getBotPose));
+        joystick.y().onTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_EF));
         
         drivetrain.registerTelemetry(logger::telemeterize);
     }
