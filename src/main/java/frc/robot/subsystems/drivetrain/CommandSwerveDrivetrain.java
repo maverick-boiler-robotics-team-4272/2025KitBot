@@ -48,6 +48,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         public double distanceTraveled; // How much distance has the robot traveled
 
         public boolean isRedSide;
+
+        public double driveCurrents[];
+        public double steerCurrents[];
     }
 
     // Logging inputs
@@ -61,6 +64,16 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         inputs.moduleStates = new SwerveModuleState[4];
         for(int i = 0; i < 4; i++) {
             inputs.moduleStates[i] = getModule(i).getCurrentState();
+        }
+
+        inputs.driveCurrents = new double[4];
+        for(int i = 0; i < 4; i++) {
+            inputs.driveCurrents[i] = getModule(i).getDriveMotor().getStatorCurrent().getValueAsDouble();
+        }
+
+        inputs.steerCurrents = new double[4];
+        for(int i = 0; i < 4; i++) {
+            inputs.steerCurrents[i] = getModule(i).getSteerMotor().getStatorCurrent().getValueAsDouble();
         }
 
         FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
@@ -307,15 +320,12 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
          * Otherwise, only check and apply the operator perspective if the DS is disabled.
          * This ensures driving behavior doesn't change until an explicit disable event occurs during testing.
          */
-        if (!m_hasAppliedOperatorPerspective || DriverStation.isDisabled()) {
-            DriverStation.getAlliance().ifPresent(allianceColor -> {
-                setOperatorPerspectiveForward(
-                    isRed
-                        ? kRedAlliancePerspectiveRotation
-                        : kBlueAlliancePerspectiveRotation
-                );
-                m_hasAppliedOperatorPerspective = true;
-            });
+        if (!m_hasAppliedOperatorPerspective) {
+            setOperatorPerspectiveForward(
+                isRed
+                    ? kRedAlliancePerspectiveRotation
+                    : kBlueAlliancePerspectiveRotation
+            );
         }
 
         inputs.isRedSide = isRed;
@@ -326,6 +336,11 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
         inputs.estimatedPose = getState().Pose;
         inputs.moduleStates = getState().ModuleStates;
+
+        for(int i = 0; i < 4; i++) {
+            inputs.driveCurrents[i] = getModule(i).getDriveMotor().getStatorCurrent().getValueAsDouble();
+            inputs.steerCurrents[i] = getModule(i).getSteerMotor().getStatorCurrent().getValueAsDouble();
+        }
     }
 
     private void startSimThread() {

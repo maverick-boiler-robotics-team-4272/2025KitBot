@@ -1,12 +1,12 @@
 package frc.robot.subsystems.dropper;
 
-import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.playingwithfusion.TimeOfFlight;
 
+import frc.robot.utils.hardware.Vortex;
 import frc.robot.utils.hardware.VortexBuilder;
 import frc.robot.utils.logging.Loggable;
 
@@ -25,7 +25,7 @@ public class Dropper extends SubsystemBase implements Loggable {
 
     DropperInputsAutoLogged inputs = new DropperInputsAutoLogged();
     
-    private SparkFlex dropperMotor;
+    private Vortex dropperMotor;
     private TimeOfFlight lidar = new TimeOfFlight(DROPPER_LIDAR_ID);
 
     public Dropper() {  
@@ -53,6 +53,8 @@ public class Dropper extends SubsystemBase implements Loggable {
     @Override
     public void log(String subdirectory, String humanReadableName) {
         Logger.processInputs(subdirectory + "/" + humanReadableName, inputs);
+
+        dropperMotor.log(subdirectory + "/" + humanReadableName, "DropperMotor");
     }
 
     @Override
