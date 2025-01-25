@@ -18,7 +18,6 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -64,8 +63,8 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             inputs.moduleStates[i] = getModule(i).getCurrentState();
         }
 
-        // FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
-        // BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
+        FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
+        BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
     }
 
     //Last distance the tag was read
@@ -275,7 +274,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         if(limelightMeasurement != null) {
             if(
                 limelightMeasurement.tagCount > 0 && 
-                limelightMeasurement.avgTagDist < 4.0 && 
+                limelightMeasurement.avgTagDist < 2.0 && 
                 Units.radiansToRotations(getState().Speeds.omegaRadiansPerSecond) < 2.0
             ) {
                 setVisionMeasurementStdDevs(VecBuilder.fill(.7,.7,9999999));
