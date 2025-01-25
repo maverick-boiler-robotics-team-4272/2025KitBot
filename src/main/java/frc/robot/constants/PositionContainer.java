@@ -18,14 +18,14 @@ public class PositionContainer {
 
     public PositionContainer(boolean red) {
         //Variable = new Pose2d(red ? FIELD_LENGTH_METERS - x : x, y, red ? Rotation2d.fromDegrees(red degrees) : Rotation2d.fromDegrees(blue Degrees))
-        CORAL_AB = new Pose2d(red ? FIELD_LENGTH_METERS - 2.855 : 2.855, 3.995, red ? Rotation2d.fromDegrees(180) : Rotation2d.fromDegrees(0));
-        CORAL_CD = new Pose2d(red ? FIELD_LENGTH_METERS - 3.681 : 3.681, 2.643,  red ? Rotation2d.fromDegrees(120) : Rotation2d.fromDegrees(60));
-        CORAL_EF = new Pose2d(red ? FIELD_LENGTH_METERS - 5.364 : 5.364, 2.643, red ? Rotation2d.fromDegrees(60) : Rotation2d.fromDegrees(120));
-        CORAL_GH = new Pose2d(red ? FIELD_LENGTH_METERS - 6.1 : 6.1, 3.995, red ? Rotation2d.fromDegrees(0) : Rotation2d.fromDegrees(180));
-        CORAL_IJ = new Pose2d(red ? FIELD_LENGTH_METERS - 5.364 : 5.364, 5.407, red ? Rotation2d.fromDegrees(-60) : Rotation2d.fromDegrees(-120));
-        CORAL_KL = new Pose2d(red ? FIELD_LENGTH_METERS - 3.681 : 3.681, 5.407, red ? Rotation2d.fromDegrees(-120) : Rotation2d.fromDegrees(-60));
+        CORAL_AB = new Pose2d(!red ? FIELD_LENGTH_METERS - 2.855 : 2.855, 3.995, !red ? Rotation2d.fromDegrees(180) : Rotation2d.fromDegrees(0));
+        CORAL_CD = new Pose2d(!red ? FIELD_LENGTH_METERS - 3.681 : 3.681, 2.643,  !red ? Rotation2d.fromDegrees(120) : Rotation2d.fromDegrees(60));
+        CORAL_EF = new Pose2d(!red ? FIELD_LENGTH_METERS - 5.364 : 5.364, 2.643, !red ? Rotation2d.fromDegrees(60) : Rotation2d.fromDegrees(120));
+        CORAL_GH = new Pose2d(!red ? FIELD_LENGTH_METERS - 6.1 : 6.1, 3.995, !red ? Rotation2d.fromDegrees(0) : Rotation2d.fromDegrees(180));
+        CORAL_IJ = new Pose2d(!red ? FIELD_LENGTH_METERS - 5.364 : 5.364, 5.407, !red ? Rotation2d.fromDegrees(-60) : Rotation2d.fromDegrees(-120));
+        CORAL_KL = new Pose2d(!red ? FIELD_LENGTH_METERS - 3.681 : 3.681, 5.407, !red ? Rotation2d.fromDegrees(-120) : Rotation2d.fromDegrees(-60));
 
-        CORAL_STATION_LEFT = new Pose2d(red ? FIELD_LENGTH_METERS - 1.277 : 1.277, 1, red ? Rotation2d.fromDegrees(126) : Rotation2d.fromDegrees(-55));
-        CORAL_STATION_RIGHT = new Pose2d(red ? FIELD_LENGTH_METERS - 1.277 : 1.277, 7.015, red ? Rotation2d.fromDegrees(-126) : Rotation2d.fromDegrees(55));
+        CORAL_STATION_LEFT = new Pose2d(red ? 1.277 : FIELD_LENGTH_METERS - 1.277, 1, red ? Rotation2d.fromDegrees(-55) : Rotation2d.fromDegrees(126));
+        CORAL_STATION_RIGHT = new Pose2d(red ? 1.277 : FIELD_LENGTH_METERS - 1.277, 7.015, red ? Rotation2d.fromDegrees(55) : Rotation2d.fromDegrees(-126));
     }
 }

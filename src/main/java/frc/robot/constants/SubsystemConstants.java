@@ -4,8 +4,11 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
 
+import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.util.Units;
+import frc.robot.utils.limelight.Limelight;
 
 import static frc.robot.constants.TunerConstants.kSpeedAt12Volts;
 
@@ -34,7 +37,32 @@ public class SubsystemConstants {
     }
 
     public static class DropperConstants {
-        public static final int DROPPER_MOTOR_ID = 28;
-        public static final int DROPPER_LIDAR_ID = 27;
+        
+    }
+
+    public static class LimeLightConstants {
+        public static Pose3d FRONT_LIMELIGHT_POSE = new Pose3d(
+            Units.inchesToMeters(9.16),
+            0.0,
+            Units.inchesToMeters(17.795),
+            new Rotation3d(
+                0, 
+                Rotation2d.fromDegrees(5).getRadians(),
+                0
+            )
+        );
+        public static Pose3d BACK_LIMELIGHT_POSE = new Pose3d(
+            Units.inchesToMeters(-8.597),
+            0.0,
+            Units.inchesToMeters(18.074),
+            new Rotation3d(
+                0,
+                Rotation2d.fromDegrees(25).getRadians(),
+                Rotation2d.fromDegrees(180).getRadians()
+            )
+        );
+
+        public static Limelight FRONT_LIMELIGHT = new Limelight("limelight-front");
+        public static Limelight BACK_LIMELIGHT = new Limelight("limelight-back");
     }
 }

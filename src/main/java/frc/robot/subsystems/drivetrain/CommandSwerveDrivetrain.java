@@ -12,24 +12,27 @@ import com.ctre.phoenix6.swerve.SwerveDrivetrainConstants;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
+import frc.robot.constants.FieldConstants;
 import frc.robot.constants.TunerConstants.TunerSwerveDrivetrain;
+import frc.robot.utils.limelight.LimelightHelpers;
 import frc.robot.utils.logging.Loggable;
-
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.AutoConstants.*;
+import static frc.robot.constants.SubsystemConstants.LimeLightConstants.*;
 
 /**
  * Class that extends the Phoenix 6 SwerveDrivetrain class and implements
@@ -43,10 +46,29 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
         public boolean fuseVison; // Is the odometry fusing
         public double distanceTraveled; // How much distance has the robot traveled
+
+        public boolean isRedSide;
     }
 
     // Logging inputs
     DrivetrainInputsAutoLogged inputs = new DrivetrainInputsAutoLogged();
+
+    private void initInputs() {
+        inputs.distanceTraveled = 0.0;
+        inputs.fuseVison = false;
+        inputs.estimatedPose = new Pose2d();
+        inputs.isRedSide = false;
+        inputs.moduleStates = new SwerveModuleState[4];
+        for(int i = 0; i < 4; i++) {
+            inputs.moduleStates[i] = getModule(i).getCurrentState();
+        }
+
+        FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
+        BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
+    }
+
+    //Last distance the tag was read
+    private double lastDistance = 0.0;
 
     private static final double kSimLoopPeriod = 0.005; // 5 ms
     private Notifier m_simNotifier = null;
@@ -149,6 +171,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         }
 
         initPathPlanner();
+        initInputs();
     }
 
     /**
@@ -175,6 +198,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         }
 
         initPathPlanner();
+        initInputs();
     }      
 
     /**
@@ -230,14 +254,43 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
                 ),
                 config,
                 // Assume the path needs to be flipped for Red vs Blue, this is normally the case
-                () -> DriverStation.getAlliance().orElse(Alliance.Blue) == Alliance.Red,
+                () -> FieldConstants.isRedSide(),
                 this // Subsystem for requirements
             );
         } catch (Exception ex) {
             DriverStation.reportError("Failed to load PathPlanner config and configure AutoBuilder", ex.getStackTrace());
         }
     }
+
+    private void fuseOdometry() {
+        FRONT_LIMELIGHT.setRobotOrientation(getState().Pose.getRotation().getDegrees());
+        BACK_LIMELIGHT.setRobotOrientation(getState().Pose.getRotation().getDegrees());
+
+        fuseVision(BACK_LIMELIGHT.getBotPoseEstimate());
+        fuseVision(FRONT_LIMELIGHT.getBotPoseEstimate());
+    }
     
+    public void fuseVision(LimelightHelpers.PoseEstimate limelightMeasurement) {
+        if(limelightMeasurement != null) {
+            if(
+                limelightMeasurement.tagCount > 0 && 
+                limelightMeasurement.avgTagDist < 2.0 && 
+                Units.radiansToRotations(getState().Speeds.omegaRadiansPerSecond) < 2.0
+            ) {
+                setVisionMeasurementStdDevs(VecBuilder.fill(.7,.7,9999999));
+                addVisionMeasurement(
+                    limelightMeasurement.pose,
+                    Utils.fpgaToCurrentTime(limelightMeasurement.timestampSeconds)
+                );
+
+                lastDistance = inputs.distanceTraveled;
+                inputs.fuseVison = true;
+            } else {
+                inputs.fuseVison = false;
+            }
+        }
+    }
+
     @Override
     public void log(String subdirectory, String humanReadableName) {
         Logger.processInputs(subdirectory + "/" + humanReadableName, inputs);
@@ -245,6 +298,8 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
     @Override
     public void periodic() {
+        boolean isRed = FieldConstants.isRedSide();
+
         /*
          * Periodically try to apply the operator perspective.
          * If we haven't applied the operator perspective before, then we should apply it regardless of DS state.
@@ -255,7 +310,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         if (!m_hasAppliedOperatorPerspective || DriverStation.isDisabled()) {
             DriverStation.getAlliance().ifPresent(allianceColor -> {
                 setOperatorPerspectiveForward(
-                    allianceColor == Alliance.Red
+                    isRed
                         ? kRedAlliancePerspectiveRotation
                         : kBlueAlliancePerspectiveRotation
                 );
@@ -263,7 +318,14 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             });
         }
 
+        inputs.isRedSide = isRed;
+
         log("Subsystems", "Drivetrain");
+
+        fuseOdometry();
+
+        inputs.estimatedPose = getState().Pose;
+        inputs.moduleStates = getState().ModuleStates;
     }
 
     private void startSimThread() {
