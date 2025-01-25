@@ -18,12 +18,16 @@ import frc.robot.constants.TunerConstants;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 import frc.robot.subsystems.drivetrain.states.DriveState;
 import frc.robot.subsystems.drivetrain.states.PathfindingState;
+import frc.robot.subsystems.drivetrain.states.ResetHeadingState;
 import frc.robot.subsystems.drivetrain.states.ResetState;
 import frc.robot.subsystems.dropper.Dropper;
 import frc.robot.subsystems.dropper.states.DropState;
 
 import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.TeleConstants.MAX_TRANSLATION;
 import static frc.robot.constants.SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT;
+
+import static frc.robot.constants.FieldConstants.SIDE_CHOOSER;
+import static frc.robot.constants.FieldConstants.getGlobalPositions;
 
 public class RobotContainer {
     private ShuffleboardTab autoTab;
@@ -62,10 +66,10 @@ public class RobotContainer {
         joystick.start().and(joystick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
 
         // reset the field-centric heading on left bumper press
-        joystick.b().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldCentric()));
+        joystick.b().onTrue(new ResetHeadingState(drivetrain));
         joystick.rightBumper().whileTrue(new DropState(dropper));
 
-        joystick.a().whileTrue(new PathfindingState(drivetrain, new Pose2d(6, 4, new Rotation2d(0))));
+        joystick.a().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_STATION_LEFT));
         joystick.y().onTrue(new ResetState(drivetrain, FRONT_LIMELIGHT::getBotPose));
         
         drivetrain.registerTelemetry(logger::telemeterize);
@@ -77,9 +81,13 @@ public class RobotContainer {
 
     private void setupAutos() {
         autoChooser = new SendableChooser<>();
+
+        SIDE_CHOOSER.setDefaultOption("Red", "red");
+        SIDE_CHOOSER.addOption("Blue", "blue");
     
         autoTab = Shuffleboard.getTab("Auto");
-        autoTab.add(autoChooser).withSize(2, 1);
+        autoTab.add(autoChooser);//.withSize(2, 1);
+        autoTab.add(SIDE_CHOOSER);
 
         autoChooser.setDefaultOption("5 coral!!!", new PathPlannerAuto("5 coral!!!"));
     }
@@ -88,5 +96,3 @@ public class RobotContainer {
         return autoChooser.getSelected();
     }
 }
-
-
