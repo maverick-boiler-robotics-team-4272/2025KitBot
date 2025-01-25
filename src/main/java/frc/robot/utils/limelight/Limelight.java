@@ -5,6 +5,7 @@ import org.littletonrobotics.junction.Logger;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.util.Units;
 import frc.robot.utils.commandUtils.Periodical;
 import frc.robot.utils.commandUtils.PeriodicalUtil;
 import frc.robot.utils.logging.Loggable;
@@ -34,14 +35,22 @@ public class Limelight implements Periodical, Loggable {
     }
 
     public void configure(Pose3d cameraoffset) {
+
+        double forwardOffset = cameraoffset.getX(); //in meters
+        double sideOffset = cameraoffset.getY(); //in meters
+        double upOffset = cameraoffset.getZ(); //in meters
+        double roll = Units.radiansToDegrees(cameraoffset.getRotation().getX()); //In degrees
+        double pitch = Units.radiansToDegrees(cameraoffset.getRotation().getY()); //In degrees
+        double yaw = Units.radiansToDegrees(cameraoffset.getRotation().getZ()); //In degrees
+
         LimelightHelpers.setCameraPose_RobotSpace(
             tableName,
-            cameraoffset.getX(),
-            cameraoffset.getY(),
-            cameraoffset.getZ(),
-            cameraoffset.getRotation().getX(),
-            cameraoffset.getRotation().getY(),
-            cameraoffset.getRotation().getZ()
+            forwardOffset,
+            sideOffset,
+            upOffset,
+            roll,
+            pitch,
+            yaw
         );
 
         LimelightHelpers.setPipelineIndex(tableName, 0);
