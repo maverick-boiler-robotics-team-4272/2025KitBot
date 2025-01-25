@@ -6,8 +6,12 @@ package frc.robot;
 
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
+
+import edu.wpi.first.util.sendable.SendableBuilder;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.shuffleboard.WidgetType;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -17,13 +21,10 @@ import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 import frc.robot.subsystems.drivetrain.states.DriveState;
 import frc.robot.subsystems.drivetrain.states.PathfindingState;
 import frc.robot.subsystems.drivetrain.states.ResetHeadingState;
-import frc.robot.subsystems.drivetrain.states.ResetState;
 import frc.robot.subsystems.dropper.Dropper;
 import frc.robot.subsystems.dropper.states.DropState;
 
 import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.TeleConstants.MAX_TRANSLATION;
-import static frc.robot.constants.SubsystemConstants.LimeLightConstants.FRONT_LIMELIGHT;
-
 import static frc.robot.constants.FieldConstants.SIDE_CHOOSER;
 import static frc.robot.constants.FieldConstants.getGlobalPositions;
 
@@ -31,7 +32,7 @@ public class RobotContainer {
     private ShuffleboardTab autoTab;
     private SendableChooser<Command> autoChooser;
 
-    private final Telemetry logger = new Telemetry(MAX_TRANSLATION);
+    // private final Telemetry logger = new Telemetry(MAX_TRANSLATION);
 
     private final CommandXboxController joystick = new CommandXboxController(0);
 
@@ -68,13 +69,13 @@ public class RobotContainer {
         joystick.rightBumper().whileTrue(new DropState(dropper));
 
         joystick.a().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_STATION_LEFT));
-        joystick.y().onTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_EF));
+        joystick.y().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_EF));
         
-        drivetrain.registerTelemetry(logger::telemeterize);
+        // drivetrain.registerTelemetry(logger::telemeterize);
     }
 
     private void registerNamedCommands() {
-        NamedCommands.registerCommand("Drop", new DropState(dropper));
+        NamedCommands.registerCommand("Drop", new DropState(dropper).withTimeout(0.5));
     }
 
     private void setupAutos() {
@@ -84,8 +85,8 @@ public class RobotContainer {
         SIDE_CHOOSER.addOption("Blue", "blue");
     
         autoTab = Shuffleboard.getTab("Auto");
-        autoTab.add(autoChooser);//.withSize(2, 1);
-        autoTab.add(SIDE_CHOOSER);
+        autoTab.add("AutoChooser", autoChooser);
+        autoTab.add("SideChooser", SIDE_CHOOSER);
 
         autoChooser.setDefaultOption("5 coral!!!", new PathPlannerAuto("5 coral!!!"));
     }
