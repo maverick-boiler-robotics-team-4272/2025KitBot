@@ -54,6 +54,8 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
         public double driveCurrents[];
         public double steerCurrents[];
+        public double driveTemperatures[];
+        public double steerTemperatures[];
     }
 
     // Logging inputs
@@ -66,13 +68,18 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         inputs.isRedSide = false;
         inputs.desiredPose = new Pose2d();
 
-        inputs.moduleStates = new SwerveModuleState[4];
+        inputs.moduleStates = getState().ModuleStates;
         inputs.driveCurrents = new double[4];
         inputs.steerCurrents = new double[4];
+        inputs.driveTemperatures = new double[4];
+        inputs.steerTemperatures = new double[4];
         for(int i = 0; i < 4; i++) {
-            inputs.moduleStates[i] = getModule(i).getCurrentState();
-            inputs.steerCurrents[i] = getModule(i).getSteerMotor().getStatorCurrent().getValueAsDouble();
-            inputs.driveCurrents[i] = getModule(i).getDriveMotor().getStatorCurrent().getValueAsDouble();
+            var module = getModule(i);
+
+            inputs.steerCurrents[i] = module.getSteerMotor().getStatorCurrent().getValueAsDouble();
+            inputs.driveCurrents[i] = module.getDriveMotor().getStatorCurrent().getValueAsDouble();
+            inputs.driveTemperatures[i] = module.getDriveMotor().getDeviceTemp().getValueAsDouble();
+            inputs.steerTemperatures[i] = module.getSteerMotor().getDeviceTemp().getValueAsDouble();
         }
 
         FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
@@ -241,19 +248,22 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             );
         }
 
-        inputs.isRedSide = isRed;
-
-        log("Subsystems", "Drivetrain");
-
         fuseOdometry();
-
+        
+        inputs.isRedSide = isRed;
         inputs.estimatedPose = getState().Pose;
         inputs.moduleStates = getState().ModuleStates;
-
+        
         for(int i = 0; i < 4; i++) {
-            inputs.driveCurrents[i] = getModule(i).getDriveMotor().getStatorCurrent().getValueAsDouble();
-            inputs.steerCurrents[i] = getModule(i).getSteerMotor().getStatorCurrent().getValueAsDouble();
+            var module = getModule(i);
+
+            inputs.steerCurrents[i] = module.getSteerMotor().getStatorCurrent().getValueAsDouble();
+            inputs.driveCurrents[i] = module.getDriveMotor().getStatorCurrent().getValueAsDouble();
+            inputs.driveTemperatures[i] = module.getDriveMotor().getDeviceTemp().getValueAsDouble();
+            inputs.steerTemperatures[i] = module.getSteerMotor().getDeviceTemp().getValueAsDouble();
         }
+
+        log("Subsystems", "Drivetrain");
     }
 
     
@@ -278,6 +288,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     );
 
     /* SysId routine for characterizing steer. This is used to find PID gains for the steer motors. */
+    @SuppressWarnings("unused")
     private final SysIdRoutine m_sysIdRoutineSteer = new SysIdRoutine(
         new SysIdRoutine.Config(
             null,        // Use default ramp rate (1 V/s)
@@ -298,6 +309,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
      * This is used to find PID gains for the FieldCentricFacingAngle HeadingController.
      * See the documentation of SwerveRequest.SysIdSwerveRotation for info on importing the log to SysId.
      */
+    @SuppressWarnings("unused")
     private final SysIdRoutine m_sysIdRoutineRotation = new SysIdRoutine(
         new SysIdRoutine.Config(
             /* This is in radians per second², but SysId only supports "volts per second" */
