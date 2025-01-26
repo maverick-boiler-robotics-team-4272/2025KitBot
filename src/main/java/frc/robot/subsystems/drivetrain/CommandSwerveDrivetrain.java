@@ -31,6 +31,8 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
+import com.pathplanner.lib.util.PathPlannerLogging;
+
 import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.AutoConstants.*;
 import static frc.robot.constants.SubsystemConstants.LimeLightConstants.*;
 
@@ -48,19 +50,21 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         public double distanceTraveled; // How much distance has the robot traveled
 
         public boolean isRedSide;
+        public Pose2d desiredPose;
 
         public double driveCurrents[];
         public double steerCurrents[];
     }
 
     // Logging inputs
-    DrivetrainInputsAutoLogged inputs = new DrivetrainInputsAutoLogged();
+    private DrivetrainInputsAutoLogged inputs = new DrivetrainInputsAutoLogged();
 
     private void initInputs() {
         inputs.distanceTraveled = 0.0;
         inputs.fuseVison = false;
         inputs.estimatedPose = new Pose2d();
         inputs.isRedSide = false;
+        inputs.desiredPose = new Pose2d();
 
         inputs.moduleStates = new SwerveModuleState[4];
         inputs.driveCurrents = new double[4];
@@ -177,6 +181,8 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         } catch (Exception ex) {
             DriverStation.reportError("Failed to load PathPlanner config and configure AutoBuilder", ex.getStackTrace());
         }
+
+        PathPlannerLogging.setLogTargetPoseCallback((pose) -> setDesiredPose(pose));
     }
 
     private void fuseOdometry() {
@@ -185,6 +191,10 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
         fuseVision(BACK_LIMELIGHT.getBotPoseEstimate());
         fuseVision(FRONT_LIMELIGHT.getBotPoseEstimate());
+    }
+
+    public void setDesiredPose(Pose2d pose) {
+        inputs.desiredPose = pose;
     }
     
     public void fuseVision(LimelightHelpers.PoseEstimate limelightMeasurement) {
