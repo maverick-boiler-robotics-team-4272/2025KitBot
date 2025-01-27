@@ -23,12 +23,13 @@ import frc.robot.subsystems.dropper.states.DropState;
 
 import static frc.robot.constants.FieldConstants.SIDE_CHOOSER;
 import static frc.robot.constants.FieldConstants.getGlobalPositions;
+import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.TeleConstants.MAX_TRANSLATION;
 
 public class RobotContainer {
     private ShuffleboardTab autoTab;
     private SendableChooser<Command> autoChooser;
 
-    // private final Telemetry logger = new Telemetry(MAX_TRANSLATION);
+    private final Telemetry logger = new Telemetry(MAX_TRANSLATION);
 
     private final CommandXboxController joystick = new CommandXboxController(0);
 
@@ -67,7 +68,9 @@ public class RobotContainer {
         joystick.a().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_STATION_LEFT));
         joystick.y().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_EF));
         
-        // drivetrain.registerTelemetry(logger::telemeterize);
+        if(!Robot.isReal()) {
+            drivetrain.registerTelemetry(logger::telemeterize);
+        }
     }
 
     private void registerNamedCommands() {
