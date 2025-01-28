@@ -62,12 +62,16 @@ task precompute(type: JavaExec) {
     }
 
     // Specify the class that performs the pre-computations
-    mainClass.set('frc.robot.precomputations.Test') // Replace with your fully qualified class name
+    mainClass.set('frc.robot.precomputations.PrecomputationMain') // Replace with your fully qualified class name
     classpath = sourceSets.main.runtimeClasspath
 }
 
 // Hook precompute into the build process only
 tasks.named('build') {
+    dependsOn 'precompute'
+}
+
+tasks.named('deploy') {
     dependsOn 'precompute'
 }
 
