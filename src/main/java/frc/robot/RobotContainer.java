@@ -70,7 +70,7 @@ public class RobotContainer {
         // joystick.y().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_EF));
         
         joystick.a().whileTrue(
-            new AutoTeleCommand(drivetrain, dropper, () -> drivetrain.getNextScorePose(), () -> drivetrain.getNextFeedPose())  
+            new AutoTeleCommand(drivetrain, dropper, () -> drivetrain.getNextScorePose(), () -> drivetrain.getNextFeedPose()).repeatedly() 
         );
 
         if(!Robot.isReal()) {
@@ -90,8 +90,8 @@ public class RobotContainer {
         buttonTab.add("IJ", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_IJ)));
         buttonTab.add("KL", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_KL)));
 
-        buttonTab.add("Left", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_STATION_LEFT)));
-        buttonTab.add("Right", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_STATION_RIGHT)));
+        buttonTab.add("Left", new InstantCommand(() -> drivetrain.setNextFeedPose(getGlobalPositions().CORAL_STATION_LEFT)));
+        buttonTab.add("Right", new InstantCommand(() -> drivetrain.setNextFeedPose(getGlobalPositions().CORAL_STATION_RIGHT)));
     }
 
     private void registerNamedCommands() {
