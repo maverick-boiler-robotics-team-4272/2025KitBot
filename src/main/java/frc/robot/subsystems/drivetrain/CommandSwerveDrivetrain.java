@@ -56,6 +56,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         public double steerCurrents[];
         public double driveTemperatures[];
         public double steerTemperatures[];
+
+        public Pose2d nextScorePose; //For auto gameplay
+        public Pose2d nextFeedPose;
     }
 
     // Logging inputs
@@ -81,6 +84,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             inputs.driveTemperatures[i] = module.getDriveMotor().getDeviceTemp().getValueAsDouble();
             inputs.steerTemperatures[i] = module.getSteerMotor().getDeviceTemp().getValueAsDouble();
         }
+
+        inputs.nextScorePose = new Pose2d();
+        inputs.nextFeedPose = new Pose2d();
 
         FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
         BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
@@ -159,6 +165,22 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
      */
     public Command applyRequest(Supplier<SwerveRequest> requestSupplier) {
         return run(() -> this.setControl(requestSupplier.get()));
+    }
+
+    public void setNextScorePose(Pose2d next) {
+        inputs.nextScorePose = next;
+    }
+
+    public void setNextFeedPose(Pose2d next) {
+        inputs.nextFeedPose = next;
+    }
+
+    public Pose2d getNextScorePose() {
+        return inputs.nextScorePose;
+    }
+
+    public Pose2d getNextFeedPose() {
+        return inputs.nextFeedPose;
     }
 
     private void initPathPlanner() {

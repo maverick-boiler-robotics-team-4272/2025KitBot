@@ -11,12 +11,13 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
+import frc.robot.commands.AutoTeleCommand;
 import frc.robot.constants.TunerConstants;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 import frc.robot.subsystems.drivetrain.states.DriveState;
-import frc.robot.subsystems.drivetrain.states.PathfindingState;
 import frc.robot.subsystems.drivetrain.states.ResetHeadingState;
 import frc.robot.subsystems.dropper.Dropper;
 import frc.robot.subsystems.dropper.states.DropState;
@@ -65,12 +66,32 @@ public class RobotContainer {
         joystick.b().onTrue(new ResetHeadingState(drivetrain));
         joystick.rightBumper().whileTrue(new DropState(dropper));
 
-        joystick.a().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_STATION_LEFT));
-        joystick.y().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_EF));
+        // joystick.a().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_STATION_LEFT));
+        // joystick.y().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_EF));
         
+        joystick.a().whileTrue(
+            new AutoTeleCommand(drivetrain, dropper, () -> drivetrain.getNextScorePose(), () -> drivetrain.getNextFeedPose())  
+        );
+
         if(!Robot.isReal()) {
             drivetrain.registerTelemetry(logger::telemeterize);
         }
+
+        configureButtons();
+    }
+
+    private void configureButtons() {
+        var buttonTab = Shuffleboard.getTab("Buttons");
+        
+        buttonTab.add("AB", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_AB)));
+        buttonTab.add("CD", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_CD)));
+        buttonTab.add("EF", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_EF)));
+        buttonTab.add("GH", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_GH)));
+        buttonTab.add("IJ", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_IJ)));
+        buttonTab.add("KL", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_KL)));
+
+        buttonTab.add("Left", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_STATION_LEFT)));
+        buttonTab.add("Right", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_STATION_RIGHT)));
     }
 
     private void registerNamedCommands() {
