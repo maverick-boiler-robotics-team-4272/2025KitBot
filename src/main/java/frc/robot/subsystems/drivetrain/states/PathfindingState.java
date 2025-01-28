@@ -1,5 +1,7 @@
 package frc.robot.subsystems.drivetrain.states;
 
+import java.util.function.Supplier;
+
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.path.PathConstraints;
 
@@ -10,12 +12,24 @@ import frc.robot.utils.commandUtils.State;
 
 public class PathfindingState extends State<CommandSwerveDrivetrain> {
     private Command command;
+    private Supplier<Pose2d> pose;
 
     public PathfindingState(CommandSwerveDrivetrain drivetrain, Pose2d targetPose) {
         super(drivetrain);
 
+        pose = () -> targetPose;
+    }
+
+    public PathfindingState(CommandSwerveDrivetrain drivetrain, Supplier<Pose2d> targetPose) {
+        super(drivetrain);
+
+        pose = targetPose;
+    }
+
+    @Override
+    public void initialize() {
         command = AutoBuilder.pathfindToPose(
-            targetPose, 
+            pose.get(), 
             new PathConstraints(
                 4.5,
                 3,
@@ -23,10 +37,7 @@ public class PathfindingState extends State<CommandSwerveDrivetrain> {
                 560
             )
         );
-    }
 
-    @Override
-    public void initialize() {
         command.initialize();
     }
 
