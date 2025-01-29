@@ -17,4 +17,9 @@ public class LidarDropState extends State<Dropper> {
     public boolean isFinished() {
         return !requiredSubsystem.hasCoral();
     }
+
+    @Override
+    public void end(boolean interrupted) {
+        requiredSubsystem.setPower(0.0);
+    }
 }
