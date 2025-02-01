@@ -3,195 +3,147 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.7864726027397264,
-        "y": 5.242080479452054
+        "x": 11.656789772727272,
+        "y": 3.9949486301369865
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.786472602739725,
-        "y": 5.242080479452054
-      },
-      "isLocked": false,
-      "linkedName": "Reef KL"
-    },
-    {
-      "anchor": {
-        "x": 5.093707191780822,
-        "y": 5.242080479452054
-      },
-      "prevControl": {
-        "x": 4.093707191780822,
-        "y": 5.242080479452054
-      },
-      "nextControl": {
-        "x": 6.093707191780822,
-        "y": 5.242080479452054
-      },
-      "isLocked": false,
-      "linkedName": "Reef IJ"
-    },
-    {
-      "anchor": {
-        "x": 6.1004280821917805,
+        "x": 17.097513824503498,
         "y": 3.9949486301369865
       },
-      "prevControl": {
-        "x": 6.352504280821917,
-        "y": 4.671104452054795
-      },
-      "nextControl": {
-        "x": 5.8483518835616435,
-        "y": 3.318792808219178
-      },
       "isLocked": false,
-      "linkedName": "Reef GH"
+      "linkedName": "Coral_GH"
     },
     {
       "anchor": {
-        "x": 5.364169520547945,
-        "y": 2.6426369863013703
+        "x": 12.3946875,
+        "y": 2.7835369318181815
       },
       "prevControl": {
-        "x": 5.749004708904109,
-        "y": 2.7928938356164386
+        "x": 10.066128914763256,
+        "y": 2.7835369318181815
       },
       "nextControl": {
-        "x": 4.9793343321917805,
-        "y": 2.492380136986302
+        "x": 14.723246085236743,
+        "y": 2.7835369318181815
       },
       "isLocked": false,
-      "linkedName": "Reef EF"
-    },
-    {
-      "anchor": {
-        "x": 3.681292808219178,
-        "y": 2.6426369863013703
-      },
-      "prevControl": {
-        "x": 4.285236515410958,
-        "y": 2.4848672945205488
-      },
-      "nextControl": {
-        "x": 3.077349101027398,
-        "y": 2.800406678082192
-      },
-      "isLocked": false,
-      "linkedName": "Reef CD"
-    },
-    {
-      "anchor": {
-        "x": 3.215496575342466,
-        "y": 3.9799229452054794
-      },
-      "prevControl": {
-        "x": 3.1313971532534253,
-        "y": 3.3901648116438357
-      },
-      "nextControl": {
-        "x": 3.2995959974315068,
-        "y": 4.569681078767123
-      },
-      "isLocked": false,
-      "linkedName": "Reef AB"
-    },
-    {
-      "anchor": {
-        "x": 11.419520547945206,
-        "y": 3.9949486301369865
-      },
-      "prevControl": {
-        "x": 5.98470810145548,
-        "y": 3.7413901969178074
-      },
-      "nextControl": {
-        "x": 16.854332994434934,
-        "y": 4.248507063356166
-      },
-      "isLocked": false,
-      "linkedName": "Red Finding GH"
-    },
-    {
-      "anchor": {
-        "x": 12.245933219178083,
-        "y": 2.6426369863013703
-      },
-      "prevControl": {
-        "x": 14.46749183968322,
-        "y": 3.3403922303082205
-      },
-      "nextControl": {
-        "x": 10.024374598672946,
-        "y": 1.9448817422945206
-      },
-      "isLocked": false,
-      "linkedName": "Red Finding EF"
-    },
-    {
-      "anchor": {
-        "x": 13.958861301369863,
-        "y": 2.6426369863013703
-      },
-      "prevControl": {
-        "x": 11.946540895226883,
-        "y": 2.098425460188357
-      },
-      "nextControl": {
-        "x": 15.971181707512843,
-        "y": 3.1868485124143837
-      },
-      "isLocked": false,
-      "linkedName": "Red Finding CD"
-    },
-    {
-      "anchor": {
-        "x": 14.710145547945206,
-        "y": 3.9949486301369865
-      },
-      "prevControl": {
-        "x": 15.475894792112587,
-        "y": 3.5984114137414385
-      },
-      "nextControl": {
-        "x": 13.944396303777825,
-        "y": 4.391485846532534
-      },
-      "isLocked": false,
-      "linkedName": "Red Finding AB"
+      "linkedName": "Coral_IJ"
     },
     {
       "anchor": {
         "x": 13.838655821917808,
-        "y": 5.40736301369863
+        "y": 2.7835369318181815
       },
       "prevControl": {
-        "x": 13.92157743271083,
-        "y": 4.967040012307363
+        "x": 11.826335415774828,
+        "y": 2.239325405705168
       },
       "nextControl": {
-        "x": 13.755734211124786,
-        "y": 5.847686015089897
+        "x": 15.850976228060787,
+        "y": 3.327748457931195
       },
       "isLocked": false,
-      "linkedName": "Red Finding KL"
+      "linkedName": "Coral_KL"
     },
     {
       "anchor": {
-        "x": 12.245933219178083,
-        "y": 5.40736301369863
+        "x": 14.47875,
+        "y": 4.020014204545454
       },
       "prevControl": {
-        "x": 12.978295187754174,
-        "y": 5.695140096586044
+        "x": 15.24449924416738,
+        "y": 3.623476988149906
+      },
+      "nextControl": {
+        "x": 13.713000755832619,
+        "y": 4.416551420941002
+      },
+      "isLocked": false,
+      "linkedName": "Coral_AB"
+    },
+    {
+      "anchor": {
+        "x": 13.750823863636365,
+        "y": 5.1966619318181815
+      },
+      "prevControl": {
+        "x": 13.833745474429387,
+        "y": 4.756338930426915
+      },
+      "nextControl": {
+        "x": 13.667902252843342,
+        "y": 5.636984933209448
+      },
+      "isLocked": false,
+      "linkedName": "Coral_CD"
+    },
+    {
+      "anchor": {
+        "x": 12.344829545454544,
+        "y": 5.186690340909092
+      },
+      "prevControl": {
+        "x": 13.084248645952597,
+        "y": 5.455816884138272
+      },
+      "nextControl": {
+        "x": 11.605410444956492,
+        "y": 4.917563797679911
+      },
+      "isLocked": false,
+      "linkedName": "Coral_EF"
+    },
+    {
+      "anchor": {
+        "x": 16.233749999999997,
+        "y": 7.051377840909091
+      },
+      "prevControl": {
+        "x": 15.604779086114608,
+        "y": 5.914669682930865
+      },
+      "nextControl": {
+        "x": 16.862720913885386,
+        "y": 8.188085998887317
+      },
+      "isLocked": false,
+      "linkedName": "Coral_Station_Left"
+    },
+    {
+      "anchor": {
+        "x": 16.35340909090909,
+        "y": 1.0385085227272737
+      },
+      "prevControl": {
+        "x": 16.628008184215417,
+        "y": 4.588368283534569
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Red Finding IJ"
+      "linkedName": "Coral_Station_Right"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 8.000000000000007,
+      "waypointRelativePos": 1,
+      "rotationDegrees": 59.99999999999999
+    },
+    {
+      "waypointRelativePos": 2.000000000000007,
       "rotationDegrees": 119.99999999999999
+    },
+    {
+      "waypointRelativePos": 3,
+      "rotationDegrees": 180.0
+    },
+    {
+      "waypointRelativePos": 4,
+      "rotationDegrees": -119.99999999999999
+    },
+    {
+      "waypointRelativePos": 5,
+      "rotationDegrees": -59.99999999999999
     }
   ],
   "constraintZones": [],
@@ -207,13 +159,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -57.847704858717506
+    "rotation": 127.66562119858331
   },
   "reversed": false,
   "folder": "Field positions",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -61.07357416474635
+    "rotation": 0.5682415460892226
   },
   "useDefaultConstraints": true
 }

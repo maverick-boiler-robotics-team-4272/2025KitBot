@@ -71,7 +71,7 @@ public class Limelight implements Periodical, Loggable {
     }
 
     public LimelightHelpers.PoseEstimate getBotPoseEstimate() {
-        return LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2(tableName); //TODO: Check Which one may work
+        return LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2(tableName);
     }
 
     @Override
