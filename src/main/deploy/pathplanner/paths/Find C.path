@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.681292808219178,
-        "y": 2.6426369863013703
+        "x": 14.01896404109589,
+        "y": 5.632748287671233
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.6762595674254355,
-        "y": 3.0745345206426187
+        "x": 14.013930800302148,
+        "y": 6.064645822012482
       },
       "isLocked": false,
-      "linkedName": "Reef CD"
+      "linkedName": "Coral_CD"
     },
     {
       "anchor": {
@@ -48,7 +48,7 @@
   "folder": "Approch Paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 60.25511870305777
+    "rotation": -119.77369562494148
   },
   "useDefaultConstraints": false
 }

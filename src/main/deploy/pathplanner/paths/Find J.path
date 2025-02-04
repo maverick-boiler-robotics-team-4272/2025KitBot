@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.364169520547945,
-        "y": 5.40736301369863
+        "x": 12.3946875,
+        "y": 2.7835369318181815
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.790925612951405,
-        "y": 5.141946172781965
+        "x": 11.82144359240346,
+        "y": 2.5181200909015162
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Coral_IJ"
     },
     {
       "anchor": {
@@ -48,7 +48,7 @@
   "folder": "Approch Paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -118.73058159998213
+    "rotation": 0.0
   },
   "useDefaultConstraints": false
 }
