@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.364169520547945,
+        "y": 2.6426369863013703
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.343693071884058,
+        "y": 2.908253197978663
+      },
+      "isLocked": false,
+      "linkedName": "Reef EF"
+    },
+    {
+      "anchor": {
+        "x": 5.364169520547945,
+        "y": 2.943150684931507
+      },
+      "prevControl": {
+        "x": 5.397240179194733,
+        "y": 2.695347675392342
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 119.35775354279124
+  },
+  "reversed": false,
+  "folder": "Approch Paths",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 119.35775354279124
+  },
+  "useDefaultConstraints": false
+}

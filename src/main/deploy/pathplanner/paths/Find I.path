@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.364169520547945,
+        "y": 5.40736301369863
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.2655460285605535,
+        "y": 4.99612316737543
+      },
+      "isLocked": false,
+      "linkedName": "Reef IJ"
+    },
+    {
+      "anchor": {
+        "x": 5.289041095890411,
+        "y": 5.106849315068493
+      },
+      "prevControl": {
+        "x": 5.352871462564318,
+        "y": 5.372950089689667
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -118.73058159998213
+  },
+  "reversed": false,
+  "folder": "Approch Paths",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -118.73058159998213
+  },
+  "useDefaultConstraints": false
+}

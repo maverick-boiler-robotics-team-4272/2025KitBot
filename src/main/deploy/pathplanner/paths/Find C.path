@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.681292808219178,
+        "y": 2.6426369863013703
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.6762595674254355,
+        "y": 3.0745345206426187
+      },
+      "isLocked": false,
+      "linkedName": "Reef CD"
+    },
+    {
+      "anchor": {
+        "x": 3.681292808219178,
+        "y": 2.9581763698630135
+      },
+      "prevControl": {
+        "x": 3.681399373501542,
+        "y": 2.7081763925753335
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 60.25511870305777
+  },
+  "reversed": false,
+  "folder": "Approch Paths",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 60.25511870305777
+  },
+  "useDefaultConstraints": false
+}
