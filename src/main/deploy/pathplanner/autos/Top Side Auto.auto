@@ -39,18 +39,6 @@
           "data": {
             "pathName": "Left Coral to AB"
           }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "AB to Left Coral"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Left Coral to AB"
-          }
         }
       ]
     }
