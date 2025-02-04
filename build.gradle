@@ -55,6 +55,26 @@ task(replayWatch, type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 
+// Define the precompute task
+task precompute(type: JavaExec) {
+    doFirst {
+        println 'Running pre-computations...'
+    }
+
+    // Specify the class that performs the pre-computations
+    mainClass.set('frc.robot.precomputations.PrecomputationMain') // Replace with your fully qualified class name
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+// Hook precompute into the build process only
+tasks.named('build') {
+    dependsOn 'precompute'
+}
+
+tasks.named('deploy') {
+    dependsOn 'precompute'
+}
+
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 5.
 dependencies {
