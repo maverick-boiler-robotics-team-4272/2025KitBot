@@ -62,7 +62,7 @@ public class PathfindingPoseParser {
             }
 
             editJavaFile(
-                "C:\\Users\\lohra\\Documents\\repos\\4272\\2025KitBot\\src\\main\\java\\frc\\robot\\constants\\PositionContainer.java",
+                "src\\main\\java\\frc\\robot\\constants\\PositionContainer.java",
                 "//Insert Precomputed positions here", 
                 "//Stop Precomputed positions here", 
                 generatedCode
