@@ -7,6 +7,7 @@ import com.pathplanner.lib.path.PathConstraints;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.constants.SubsystemConstants.DrivetrainConstants.AutoConstants;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 import frc.robot.utils.commandUtils.State;
 
@@ -31,10 +32,10 @@ public class PathfindingState extends State<CommandSwerveDrivetrain> {
         command = AutoBuilder.pathfindToPose(
             pose.get(), 
             new PathConstraints(
-                4.5,
-                3,
-                720,
-                560
+                AutoConstants.TRANSLATION_MAX,
+                AutoConstants.TRANSLATION_MAX_A,
+                AutoConstants.ROTATION_MAX.getDegrees(),
+                AutoConstants.ROTATION_MAX_A.getDegrees()
             )
         );
 
