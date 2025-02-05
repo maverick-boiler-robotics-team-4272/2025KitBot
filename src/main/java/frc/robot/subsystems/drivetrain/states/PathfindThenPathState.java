@@ -36,5 +36,22 @@ public class PathfindThenPathState extends State<CommandSwerveDrivetrain> {
                 AutoConstants.ROTATION_MAX_A.getDegrees()
             )
         );
+
+        command.initialize();
+    }
+
+    @Override
+    public void execute() {
+        command.execute();
+    }
+
+    @Override
+    public void end(boolean interrupted) {
+        command.end(interrupted);
+    }
+
+    @Override
+    public boolean isFinished() {
+        return command.isFinished();
     }
 }
