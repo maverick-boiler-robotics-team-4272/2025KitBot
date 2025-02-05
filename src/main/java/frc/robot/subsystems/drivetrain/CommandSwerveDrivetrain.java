@@ -35,6 +35,7 @@ import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.PathPlannerLogging;
 
+import static frc.robot.constants.FieldConstants.getGlobalPositions;
 import static frc.robot.constants.SubsystemConstants.LimeLightConstants.*;
 
 /**
@@ -86,8 +87,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             inputs.steerTemperatures[i] = module.getSteerMotor().getDeviceTemp().getValueAsDouble();
         }
 
-        inputs.nextScorePose = new Pose2d();
-        inputs.nextFeedPose = new Pose2d();
+        inputs.nextScorePose = getGlobalPositions().CORAL_AB;
+        inputs.nextFeedPose = getGlobalPositions().CORAL_STATION_LEFT;
+        nextPath = getGlobalPositions().CORAL_A;
 
         FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
         BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
