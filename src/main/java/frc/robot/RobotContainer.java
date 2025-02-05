@@ -70,7 +70,13 @@ public class RobotContainer {
         // joystick.y().whileTrue(new PathfindingState(drivetrain, getGlobalPositions().CORAL_EF));
         
         joystick.a().whileTrue(
-            new AutoTeleCommand(drivetrain, dropper, () -> drivetrain.getNextScorePose(), () -> drivetrain.getNextFeedPose()).repeatedly() 
+            new AutoTeleCommand(
+                drivetrain, 
+                dropper, 
+                () -> drivetrain.getNextScorePose(), 
+                () -> drivetrain.getNextFeedPose(), 
+                () -> drivetrain.getNextPath() //Remove to not follow paths
+            ).repeatedly() 
         );
 
         if(!Robot.isReal()) {
@@ -83,12 +89,12 @@ public class RobotContainer {
     private void configureButtons() {
         var buttonTab = Shuffleboard.getTab("Buttons");
         
-        buttonTab.add("AB", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_AB)).ignoringDisable(true));
-        buttonTab.add("CD", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_CD)).ignoringDisable(true));
-        buttonTab.add("EF", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_EF)).ignoringDisable(true));
-        buttonTab.add("GH", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_GH)).ignoringDisable(true));
-        buttonTab.add("IJ", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_IJ)).ignoringDisable(true));
-        buttonTab.add("KL", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_KL)).ignoringDisable(true));
+        buttonTab.add("AB", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_AB, getGlobalPositions().CORAL_A)).ignoringDisable(true));
+        buttonTab.add("CD", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_CD, getGlobalPositions().CORAL_C)).ignoringDisable(true));
+        buttonTab.add("EF", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_EF, getGlobalPositions().CORAL_E)).ignoringDisable(true));
+        buttonTab.add("GH", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_GH, getGlobalPositions().CORAL_G)).ignoringDisable(true));
+        buttonTab.add("IJ", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_IJ, getGlobalPositions().CORAL_I)).ignoringDisable(true));
+        buttonTab.add("KL", new InstantCommand(() -> drivetrain.setNextScorePose(getGlobalPositions().CORAL_KL, getGlobalPositions().CORAL_L)).ignoringDisable(true));
 
         buttonTab.add("Left", new InstantCommand(() -> drivetrain.setNextFeedPose(getGlobalPositions().CORAL_STATION_LEFT)).ignoringDisable(true));
         buttonTab.add("Right", new InstantCommand(() -> drivetrain.setNextFeedPose(getGlobalPositions().CORAL_STATION_RIGHT)).ignoringDisable(true));
