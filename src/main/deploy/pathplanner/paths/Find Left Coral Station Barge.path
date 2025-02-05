@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 15.476455479452055,
+        "y": 2.056635273972603
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 15.472374293399296,
+        "y": 1.709103627171646
+      },
+      "isLocked": false,
+      "linkedName": "TAG_LEFT_CORAL_STATION"
+    },
+    {
+      "anchor": {
+        "x": 15.476455479452055,
+        "y": 0.39131944444351463
+      },
+      "prevControl": {
+        "x": 15.481254048821429,
+        "y": 1.265873593842332
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 127.92646232503866
+  },
+  "reversed": false,
+  "folder": "Approch Paths",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 127.50414236027015
+  },
+  "useDefaultConstraints": true
+}
