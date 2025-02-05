@@ -108,7 +108,7 @@ public class RobotContainer {
         autoTab.add("AutoChooser", autoChooser);
         autoTab.add("SideChooser", SIDE_CHOOSER);
 
-        autoChooser.setDefaultOption("5 coral!!!", new PathPlannerAuto("5 coral!!!"));
+        autoChooser.setDefaultOption("5 coral!!!", new PathPlannerAuto("Top Side Auto"));
     }
 
     public Command getAutonomousCommand() {
