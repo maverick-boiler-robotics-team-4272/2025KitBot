@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.364169520547945,
-        "y": 2.6426369863013703
+        "x": 12.15577910958904,
+        "y": 5.542594178082192
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.343693071884058,
-        "y": 2.908253197978663
+        "x": 12.269222146161107,
+        "y": 5.039862592860345
       },
       "isLocked": false,
-      "linkedName": "Reef EF"
+      "linkedName": "Coral_EF"
     },
     {
       "anchor": {
-        "x": 5.364169520547945,
-        "y": 2.943150684931507
+        "x": 12.245933219178083,
+        "y": 5.091823630136987
       },
       "prevControl": {
-        "x": 5.397240179194733,
-        "y": 2.695347675392342
+        "x": 12.145471338142688,
+        "y": 5.582433376103319
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 119.35775354279124
+    "rotation": -60.068488159492176
   },
   "reversed": false,
   "folder": "Approch Paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 119.35775354279124
+    "rotation": -60.068488159492176
   },
   "useDefaultConstraints": false
 }

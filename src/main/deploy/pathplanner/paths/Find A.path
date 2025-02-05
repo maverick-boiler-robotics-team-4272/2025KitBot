@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.215496575342466,
-        "y": 3.9799229452054794
+        "x": 14.815325342465753,
+        "y": 3.9648972602739723
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.455396402949979,
-        "y": 4.188449372661712
+        "x": 14.363170699172457,
+        "y": 3.828772070395034
       },
       "isLocked": false,
-      "linkedName": "Reef AB"
+      "linkedName": "Coral_AB"
     },
     {
       "anchor": {
-        "x": 3.1704195205453645,
-        "y": 4.190282534253645
+        "x": 14.39460616438356,
+        "y": 3.844691780821918
       },
       "prevControl": {
-        "x": 3.016258790638874,
-        "y": 3.993471789235244
+        "x": 14.918651018015527,
+        "y": 3.992514832212609
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -179.51853419416167
   },
   "reversed": false,
   "folder": "Approch Paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -179.51853419416167
   },
   "useDefaultConstraints": false
 }
