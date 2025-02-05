@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.constants.FieldConstants;
+import frc.robot.constants.SubsystemConstants.DrivetrainConstants.AutoConstants;
 import frc.robot.constants.TunerConstants.TunerSwerveDrivetrain;
 import frc.robot.utils.limelight.LimelightHelpers;
 import frc.robot.utils.logging.Loggable;
@@ -31,9 +32,9 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
+import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.PathPlannerLogging;
 
-import static frc.robot.constants.SubsystemConstants.DrivetrainConstants.AutoConstants.*;
 import static frc.robot.constants.SubsystemConstants.LimeLightConstants.*;
 
 /**
@@ -91,6 +92,8 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         FRONT_LIMELIGHT.configure(FRONT_LIMELIGHT_POSE);
         BACK_LIMELIGHT.configure(BACK_LIMELIGHT_POSE);
     }
+
+    private PathPlannerPath nextPath;
 
     /* Blue alliance sees forward as 0 degrees (toward red alliance wall) */
     private static final Rotation2d kBlueAlliancePerspectiveRotation = Rotation2d.kZero;
@@ -167,6 +170,11 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         return run(() -> this.setControl(requestSupplier.get()));
     }
 
+    public void setNextScorePose(Pose2d next, PathPlannerPath path) {
+        inputs.nextScorePose = next;
+        nextPath = path;
+    }
+
     public void setNextScorePose(Pose2d next) {
         inputs.nextScorePose = next;
     }
@@ -181,6 +189,10 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
 
     public Pose2d getNextFeedPose() {
         return inputs.nextFeedPose;
+    }
+
+    public PathPlannerPath getNextPath() {
+        return nextPath;
     }
 
     private void initPathPlanner() {
@@ -198,9 +210,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
                 ),
                 new PPHolonomicDriveController(
                     // PID constants for translation
-                    new PIDConstants(TRANSLATION_P, TRANSLATION_I, TRANSLATION_D),
+                    new PIDConstants(AutoConstants.TRANSLATION_P, AutoConstants.TRANSLATION_I, AutoConstants.TRANSLATION_D),
                     // PID constants for rotation
-                    new PIDConstants(ROTATION_P, ROTATION_I, ROTATION_D)
+                    new PIDConstants(AutoConstants.ROTATION_P, AutoConstants.ROTATION_I, AutoConstants.ROTATION_D)
                 ),
                 config,
                 // Assume the path needs to be flipped for Red vs Blue, this is normally the case
@@ -235,7 +247,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             ) {
                 setVisionMeasurementStdDevs(VecBuilder.fill(.7,.7,9999999));
                 addVisionMeasurement(
-                    limelightMeasurement.pose,
+                    new Pose2d(limelightMeasurement.pose.getTranslation(), getState().Pose.getRotation()),
                     Utils.fpgaToCurrentTime(limelightMeasurement.timestampSeconds)
                 );
 
