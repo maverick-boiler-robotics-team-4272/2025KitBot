@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.093707191780822,
-        "y": 5.242080479452054
+        "x": 12.050599315068494,
+        "y": 2.4322773972602736
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.9950836997934305,
-        "y": 4.830840633128854
+        "x": 12.23203671929222,
+        "y": 2.8833305908894724
       },
       "isLocked": false,
-      "linkedName": "Reef IJ"
+      "linkedName": "Coral_IJ"
     },
     {
       "anchor": {
-        "x": 5.289041095890411,
-        "y": 5.106849315068493
+        "x": 12.26095890410959,
+        "y": 2.9581763698630135
       },
       "prevControl": {
-        "x": 5.352871462564318,
-        "y": 5.372950089689667
+        "x": 12.071917421075932,
+        "y": 2.47218462714055
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -118.73058159998213
+    "rotation": 58.72229713313359
   },
   "reversed": false,
   "folder": "Approch Paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -118.73058159998213
+    "rotation": 58.72229713313359
   },
   "useDefaultConstraints": false
 }

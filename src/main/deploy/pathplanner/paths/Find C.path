@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.013930800302148,
-        "y": 6.064645822012482
+        "x": 13.916256059347011,
+        "y": 5.1380767617444185
       },
       "isLocked": false,
       "linkedName": "Coral_CD"
     },
     {
       "anchor": {
-        "x": 3.681292808219178,
-        "y": 2.9581763698630135
+        "x": 13.898758561643836,
+        "y": 5.091823630136987
       },
       "prevControl": {
-        "x": 3.681399373501542,
-        "y": 2.7081763925753335
+        "x": 14.001142820591877,
+        "y": 5.60367932613876
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.25511870305777
+    "rotation": -119.77369562494148
   },
   "reversed": false,
   "folder": "Approch Paths",

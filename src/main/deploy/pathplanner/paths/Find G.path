@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.1004280821917805,
-        "y": 3.9949486301369865
+        "x": 11.25423801369863,
+        "y": 3.9799229452054794
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.743803497442578,
-        "y": 3.821504044087531
+        "x": 11.725334102882549,
+        "y": 4.168611889379923
       },
       "isLocked": false,
-      "linkedName": "Reef GH"
+      "linkedName": "Coral_GH"
     },
     {
       "anchor": {
-        "x": 5.829965753424658,
-        "y": 3.859717465753425
+        "x": 11.720034246575342,
+        "y": 4.160231164383561
       },
       "prevControl": {
-        "x": 6.067502397748121,
-        "y": 3.981574553663354
+        "x": 11.245947583457156,
+        "y": 3.9723926406613486
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.5682415460892226
   },
   "reversed": false,
   "folder": "Approch Paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.5682415460892226
   },
   "useDefaultConstraints": false
 }
